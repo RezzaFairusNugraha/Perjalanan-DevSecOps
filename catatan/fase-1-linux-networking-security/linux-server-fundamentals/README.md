@@ -1,94 +1,85 @@
-# Linux Server Fundamentals
+# Fase 1 — TryHackMe Pre Security & Linux Server Fundamentals
 
 ## 🎯 Tujuan
 
-Memahami dasar-dasar Linux Server sebagai fondasi untuk mempelajari DevOps, Cloud, dan DevSecOps.
+Memahami fondasi dasar Cybersecurity melalui **TryHackMe (Pre Security)** serta dasar-dasar **Linux Server** sebagai fondasi untuk mempelajari DevOps, Cloud, dan DevSecOps.
 
-Pada tahap awal ini saya menyiapkan environment Linux Server menggunakan virtual machine agar proses belajar dan praktik dapat dilakukan secara terisolasi dari sistem utama.
+Pada tahap awal ini saya menggabungkan dua pendekatan belajar:
+1. **TryHackMe** (mulai dari *Pre Security* hingga nantinya ke jalur *DevSecOps*) untuk memahami konsep fundamental komputer/hardware, pengenalan *Offensive & Defensive Security*, *Careers in Cyber*, networking, dan lab Linux interaktif.
+2. **Virtual Machine (VM)** lokal untuk mempraktikkan administrasi Linux Server secara terisolasi dari sistem utama.
 
 Target pembelajaran:
 
-- Memahami struktur dasar Linux Server.
-- Memahami filesystem Linux.
-- Memahami user dan group.
-- Memahami permission dan ownership.
-- Memahami process dan service.
-- Memahami package management.
-- Memahami penggunaan terminal.
-- Memahami cara membaca informasi sistem.
-- Memahami dasar troubleshooting Linux.
+- Memahami konsep dasar **Offensive Security Intro**, **Defensive Security Intro**, dan **Careers in Cyber** di TryHackMe.
+- Memahami dasar **Hardware** komputer (CPU, RAM, Storage, I/O) dan hubungannya dengan sistem operasi.
+- Memahami struktur dasar Linux Server & filesystem Linux.
+- Memahami user, group, permission, dan ownership.
+- Memahami process, service (`systemd`), dan package management.
+- Memahami cara membaca informasi resource sistem dan dasar troubleshooting Linux.
+
+> 💡 **Catatan khusus TryHackMe Pre Security:** Dokumentasi lengkap mengenai apa yang saya pelajari di TryHackMe hari ini juga dicatat secara mendalam di [`../tryhackme-pre-security/README.md`](../tryhackme-pre-security/README.md).
 
 ---
 
 ## 📚 Yang Dipelajari
 
-### 1. Linux Server
+### 1. TryHackMe — Cyber Security Intro & Pre Security
+
+Sebelum masuk lebih jauh ke konfigurasi server, saya memulai pembelajaran di **TryHackMe** pada bagian pengantar dan **Pre Security** karena di TryHackMe juga terdapat jalur pembelajaran **DevSecOps** yang akan sering saya gunakan ke depannya.
+
+Materi yang sudah saya pelajari di TryHackMe:
+
+- **Offensive Security Intro:** Memahami bagaimana sisi *attacker* / *penetration tester* mencari celah keamanan pada aplikasi. Saya mempraktikkan simulasi menemukan halaman tersembunyi pada website *FakeBank* menggunakan tool `gobuster` di terminal.
+- **Defensive Security Intro:** Memahami bagaimana sisi *defender* (Blue Team / SOC) memonitor sistem, menganalisis alert SIEM, memeriksa *Threat Intelligence* terhadap IP mencurigakan, dan memblokir serangan melalui firewall.
+- **Careers in Cyber:** Mempelajari berbagai peran di dunia keamanan siber (SOC Analyst, Incident Responder, Penetration Tester, hingga **Security Engineer / DevSecOps**). Ini semakin memperjelas target belajar saya menuju **DevSecOps**.
+- **Hardware & Computer Fundamentals:** Mempelajari cara kerja komponen perangkat keras komputer (CPU, RAM yang bersifat *volatile*, Storage yang bersifat *non-volatile*, Motherboard) sebagai fondasi sebelum mempelajari cara sistem operasi Linux mengelola resource tersebut.
+
+### 2. Linux Server
 
 Linux Server adalah sistem operasi Linux yang digunakan untuk menjalankan service, aplikasi, database, web server, dan berbagai workload lainnya.
 
-Pada pembelajaran DevOps, Linux menjadi salah satu fondasi penting karena banyak server dan infrastructure menggunakan Linux.
+Pada pembelajaran DevOps dan DevSecOps, Linux menjadi salah satu fondasi utama karena hampir seluruh server, container, dan cloud infrastructure berjalan di atas Linux.
 
-Untuk memulai pembelajaran, saya menyiapkan dua environment:
+Untuk memulai pembelajaran mandiri di luar lab TryHackMe, saya menyiapkan dua environment:
 
 - **Ubuntu Server**
 - **RHEL / RHEL-based environment**
 
 Ubuntu akan digunakan sebagai environment utama untuk mengikuti pembelajaran, sedangkan environment RHEL digunakan untuk mengenal ekosistem Red Hat.
 
-### 2. Virtual Machine
+### 3. Virtual Machine & Lab TryHackMe
 
-Saya menggunakan Virtual Machine (VM) agar dapat menjalankan Linux Server tanpa mengganti sistem operasi utama.
+Saya menggunakan kombinasi **TryHackMe AttackBox / Cloud Lab** dan **Virtual Machine (VM)** lokal agar dapat menjalankan Linux Server tanpa mengganti sistem operasi utama.
 
 Konsep environment yang digunakan:
 
 ```text
-Laptop
+Pembelajaran Fase 1
   │
-  └── Virtual Machine
-        │
+  ├── TryHackMe (Pre Security → Linux & Network → DevSecOps)
+  │     ├── Offensive & Defensive Security Intro
+  │     ├── Careers in Cyber
+  │     └── Hardware & System Fundamentals
+  │
+  └── Virtual Machine (Lokal)
         ├── Ubuntu Server
-        │
         └── RHEL / RHEL-based
 ```
 
-Dengan VM, saya dapat melakukan eksperimen terhadap Linux Server tanpa langsung mengubah konfigurasi sistem utama.
+### 4. Ubuntu Server & RHEL
 
-### 3. Ubuntu Server
-
-Ubuntu Server digunakan sebagai environment utama untuk mempelajari Linux Fundamentals.
-
-Materi yang akan dipelajari meliputi:
+Ubuntu Server digunakan sebagai environment utama untuk mempelajari Linux Fundamentals:
 
 - Filesystem
 - User & Group
 - Permission
-- Process
-- Service
+- Process & Service
 - Package Management
-- Networking
-- SSH
-- System Monitoring
+- Networking & SSH
+- System Monitoring (CPU, RAM, Disk — menyambung dari materi *Hardware*)
 - Troubleshooting
 
-### 4. RHEL
-
-RHEL digunakan untuk mengenal sistem Linux berbasis Red Hat.
-
-Hal yang nantinya akan dibandingkan dengan Ubuntu:
-
-```text
-Ubuntu / Debian
-        ↕
-RHEL ecosystem
-```
-
-Beberapa perbedaan yang akan dipelajari:
-
-- Package management
-- Service management
-- Firewall
-- Struktur konfigurasi
-- Administrative workflow
+Sedangkan RHEL digunakan untuk mengenal sistem Linux berbasis Red Hat dan membandingkannya dengan ekosistem Ubuntu/Debian (package management, service management, firewall, dan struktur konfigurasi).
 
 ---
 
@@ -96,34 +87,44 @@ Beberapa perbedaan yang akan dipelajari:
 
 ### Status Saat Ini
 
-**Environment masih dalam tahap persiapan.**
+**Sedang aktif belajar di TryHackMe (Pre Security) sambil menyiapkan environment VM Linux.**
 
-Saat ini saya sedang:
+Progress yang sudah dan sedang saya kerjakan:
 
+#### 🛡️ TryHackMe (Pre Security & Intro)
+- [x] Menyelesaikan **Offensive Security Intro** (praktik enumerasi direktori web dengan `gobuster`).
+- [x] Menyelesaikan **Defensive Security Intro** (praktik analisis SIEM alert, threat intelligence, dan blokir IP di firewall).
+- [x] Menyelesaikan **Careers in Cyber** (mengenal peran Security Engineer & arah karier ke DevSecOps).
+- [x] Mempelajari **Hardware Fundamentals** di Pre Security.
+- [ ] Melanjutkan modul **Network Fundamentals** & **How the Web Works** di TryHackMe.
+- [ ] Melanjutkan modul **Linux Fundamentals** di TryHackMe.
+
+#### 🐧 Persiapan & Praktik Linux Server (VM)
 - [x] Menentukan Ubuntu Server sebagai Linux Server utama.
 - [x] Menentukan RHEL sebagai environment tambahan.
-- [ ] Download Ubuntu Server.
-- [ ] Download RHEL / RHEL-based environment.
-- [ ] Membuat VM Ubuntu.
-- [ ] Membuat VM RHEL.
-- [ ] Menyelesaikan instalasi.
-- [ ] Melakukan login pertama.
-- [ ] Mengecek informasi sistem.
-- [ ] Mempelajari filesystem.
-- [ ] Mempelajari user dan group.
-- [ ] Mempelajari permission.
-- [ ] Mempelajari process.
-- [ ] Mempelajari service.
-- [ ] Mempelajari package management.
+- [ ] Download Ubuntu Server & RHEL-based environment.
+- [ ] Membuat VM Ubuntu & VM RHEL.
+- [ ] Menyelesaikan instalasi dan melakukan login pertama.
+- [ ] Mengecek informasi sistem & hardware resource.
+- [ ] Mempelajari filesystem, user, group, dan permission.
+- [ ] Mempelajari process, service, dan package management.
 - [ ] Melakukan basic troubleshooting.
 
 ---
 
 ## 🧾 Perintah Penting
 
-Bagian ini akan diisi setelah environment Linux selesai dibuat dan command sudah dipraktikkan.
+### Command dari Praktik TryHackMe (Offensive Security Intro)
 
-Beberapa command yang akan dipelajari:
+Mencari direktori atau halaman tersembunyi pada web server menggunakan `gobuster`:
+
+```bash
+gobuster -u http://fakebank.com -w wordlist.txt dir
+```
+
+### Command Linux Server yang Akan & Sedang Dipelajari
+
+Navigasi dan manipulasi file:
 
 ```bash
 pwd
@@ -149,7 +150,7 @@ whoami
 id
 ```
 
-Resource sistem:
+Resource sistem (terkait materi Hardware — RAM & Storage):
 
 ```bash
 free -h
@@ -157,33 +158,26 @@ df -h
 du -sh
 ```
 
-Process:
+Process & Service:
 
 ```bash
 ps
 top
-```
-
-Service:
-
-```bash
 systemctl status
 systemctl start
 systemctl stop
 systemctl restart
 ```
 
-> Command akan ditambahkan dan dijelaskan setelah benar-benar dipraktikkan.
-
 ---
 
 ## ❌ Error
 
-Belum ada error yang didokumentasikan karena environment VM masih dalam tahap download dan persiapan.
+Belum ada error kritis yang menghambat proses belajar.
 
-Nantinya setiap error yang ditemukan akan dicatat di bagian ini.
+Pada saat menggunakan TryHackMe AttackBox, web target lokal (`fakebank.com`) hanya dapat diakses dari dalam browser *AttackBox* (jaringan internal lab) dan bukan dari browser laptop utama.
 
-Contoh format:
+Nantinya setiap error konfigurasi Linux yang ditemukan saat praktik VM maupun lab TryHackMe akan dicatat di bagian ini dengan format:
 
 ```text
 Error:
@@ -193,7 +187,7 @@ Penyebab:
 [hasil analisis]
 
 Environment:
-Ubuntu / RHEL
+TryHackMe / Ubuntu / RHEL
 
 Command:
 [command yang digunakan]
@@ -203,90 +197,73 @@ Command:
 
 ## 🔧 Solusi
 
-Belum ada solusi yang dicatat karena belum masuk tahap praktik.
-
 Setiap solusi akan ditulis berdasarkan hasil troubleshooting yang benar-benar dilakukan.
-
-Format:
 
 ```text
 Masalah:
-...
+Mengakses target lab di TryHackMe Offensive Security Intro.
 
 Analisis:
-...
+Target berjalan di jaringan terisolasi milik lab TryHackMe.
 
 Solusi:
-...
+Menggunakan terminal dan browser bawaan di dalam AttackBox untuk melakukan scanning dengan gobuster dan membuka halaman web target.
 
 Hasil:
-...
+Berhasil menemukan endpoint tersembunyi /bank-transfer dan menyelesaikan simulasi.
 ```
 
 ---
 
 ## 🧠 Yang Saya Pahami
 
-Untuk saat ini saya memahami bahwa Linux Server akan menjadi salah satu fondasi utama dalam perjalanan belajar DevOps dan DevSecOps.
+Dari apa yang sudah saya pelajari sejauh ini:
 
-Saya juga memahami bahwa menggunakan VM memungkinkan saya membuat environment Linux untuk belajar tanpa harus mengganti sistem operasi utama.
-
-Saya memilih Ubuntu Server sebagai environment utama dan RHEL / RHEL-based sebagai environment tambahan agar nantinya dapat mengenal lebih dari satu ekosistem Linux.
-
-Bagian teknis lainnya akan saya isi setelah melakukan praktik secara langsung.
+1. **Gambaran Besar Cybersecurity (Offensive vs Defensive):** Melalui TryHackMe, saya memahami perbedaan cara kerja tim penyerang (*Offensive*) yang mencari celah seperti direktori terbuka, dan tim bertahan (*Defensive*) yang memantau SIEM serta memblokir ancaman lewat firewall. Keduanya sangat relevan dengan **DevSecOps** karena tujuan akhirnya adalah mengotomatisasi keamanan sejak awal.
+2. **Arah Karier Menuju DevSecOps:** Dari materi *Careers in Cyber* dan tersedianya learning path *DevSecOps* di TryHackMe, saya memutuskan akan sering belajar di TryHackMe untuk memperkuat sisi security sembari membangun skill DevOps.
+3. **Dasar Hardware ke Linux Server:** Memahami cara kerja CPU, RAM, dan Storage di materi *Pre Security* membuat konsep monitoring resource di Linux Server menjadi lebih masuk akal.
+4. **Isolasi Environment Belajar:** Baik menggunakan lab interaktif di TryHackMe maupun VM lokal (Ubuntu Server & RHEL) memungkinkan saya bereksperimen dengan aman tanpa merusak sistem utama.
 
 ---
 
 ## ❓ Belum Paham
 
-Beberapa hal yang masih perlu dipelajari:
+Beberapa hal yang masih perlu dipelajari di tahap selanjutnya:
 
-- Bagaimana filesystem Linux bekerja secara keseluruhan?
-- Apa fungsi masing-masing directory seperti `/etc`, `/var`, `/home`, `/usr`, dan `/opt`?
-- Bagaimana user dan group bekerja?
-- Bagaimana permission Linux bekerja?
-- Apa perbedaan process dan service?
-- Bagaimana `systemd` bekerja?
-- Bagaimana Linux mengelola package?
-- Bagaimana Linux menangani networking?
-- Bagaimana cara melakukan troubleshooting ketika service gagal?
-- Apa perbedaan Ubuntu/Debian dengan RHEL ecosystem?
+- Bagaimana cara mengamankan web server (misalnya di Nginx) agar endpoint sensitif tidak mudah ditemukan menggunakan tool seperti `gobuster`?
+- Bagaimana filesystem Linux bekerja secara keseluruhan (`/etc`, `/var`, `/home`, `/usr`, `/opt`)?
+- Bagaimana user, group, dan permission Linux bekerja secara detail?
+- Apa perbedaan process dan service serta bagaimana `systemd` bekerja?
+- Bagaimana Linux mengelola package dan menangani networking?
+- Apa perbedaan administrasi sistem antara Ubuntu/Debian dengan RHEL ecosystem?
 
 ---
 
 ## 📌 Next
 
-Setelah VM selesai dibuat, langkah berikutnya:
+Langkah berikutnya pada Fase 1:
 
-1. Menyelesaikan instalasi Ubuntu Server.
-2. Menyelesaikan instalasi RHEL / RHEL-based environment.
-3. Login ke masing-masing server.
-4. Mengecek informasi sistem.
-5. Mengenal struktur filesystem.
-6. Membuat user dan group.
-7. Memahami permission dan ownership.
-8. Mempelajari process.
-9. Mempelajari systemd dan service.
-10. Mempelajari package management.
-11. Melakukan basic troubleshooting.
-12. Mendokumentasikan hasil praktik.
+1. Melanjutkan modul **Pre Security** di TryHackMe (khususnya *Network Fundamentals*, *How the Web Works*, dan *Linux Fundamentals*).
+2. Menyelesaikan instalasi VM Ubuntu Server & RHEL-based environment.
+3. Mempraktikkan langsung command dasar Linux, manajemen user/permission, process, dan service.
+4. Mendokumentasikan setiap perkembangan belajar dari TryHackMe dan VM ke dalam catatan Fase 1.
 
-Setelah bagian Linux Fundamentals selesai, saya akan melanjutkan ke:
+Alur belajar Fase 1:
 
 ```text
-Linux Server Fundamentals
+TryHackMe Pre Security (Intro, Hardware, Network, Linux)
+        ↓
+Linux Server Fundamentals (VM Ubuntu & RHEL)
         ↓
 Networking Fundamentals
         ↓
-SSH
+SSH & SSH Hardening
         ↓
-Nginx
+Nginx & SSL/TLS
         ↓
-Firewall
+Firewall & Security Hardening
         ↓
-Security Hardening
-        ↓
-DevOps Foundation
+DevOps Foundation (Fase 2)
 ```
 
 ---

@@ -4,7 +4,7 @@
 
 **Dokumentasi perjalanan belajarku dari Linux, DevOps, Cloud, hingga DevSecOps melalui catatan, lab praktik, dan proyek nyata.**
 
-Linux · Networking · Docker · CI/CD · AWS · Terraform · Kubernetes · Cybersecurity · DevSecOps
+TryHackMe · Linux · Networking · Docker · CI/CD · AWS · Terraform · Kubernetes · Cybersecurity · DevSecOps
 
 </div>
 
@@ -15,14 +15,14 @@ Linux · Networking · Docker · CI/CD · AWS · Terraform · Kubernetes · Cybe
 Repo ini adalah jurnal belajarku selama **18 minggu**  
 (**23 Okt 2026 – 26 Feb 2027**), yang dikerjakan sambil menjalani PKL.
 
-Perjalanan ini berfokus pada membangun fondasi **Linux, Networking, DevOps, Cloud, dan Cybersecurity**, kemudian menggabungkannya menjadi kemampuan **DevSecOps**.
+Perjalanan ini berfokus pada membangun fondasi **Cybersecurity (melalui TryHackMe), Linux, Networking, DevOps, dan Cloud**, kemudian menggabungkannya menjadi kemampuan **DevSecOps**.
 
-Semua materi di repo ini dibuat berdasarkan apa yang benar-benar kupelajari dan praktikkan sendiri.
+Semua materi di repo ini dibuat berdasarkan apa yang benar-benar kupelajari dan praktikkan sendiri, termasuk catatan serta walkthrough lab dari **TryHackMe** (mulai dari *Pre Security* hingga learning path *DevSecOps*).
 
 Di sini aku mendokumentasikan:
 
 - 📚 Materi yang dipelajari
-- 💻 Lab dan eksperimen
+- 💻 Lab, room TryHackMe, dan eksperimen mandiri
 - 🛠️ Command dan konfigurasi
 - ❌ Error yang ditemukan
 - 🔧 Cara troubleshooting
@@ -39,7 +39,7 @@ Tujuannya bukan sekadar menyelesaikan tutorial, tetapi **memahami bagaimana apli
 
 - 🎓 Siswa SMK yang sedang PKL di bidang fullstack
 - 🐧 Memiliki sertifikat **Red Hat Container**
-- 🔐 Tertarik pada cybersecurity sejak SMP
+- 🔐 Tertarik pada cybersecurity sejak SMP & aktif belajar di **TryHackMe**
 - ⚙️ Sedang membangun kemampuan di bidang DevOps
 - ☁️ Tertarik pada Cloud dan Infrastructure
 - 🛡️ Target jangka panjang: **DevSecOps / Security Engineering**
@@ -48,6 +48,8 @@ Tujuannya bukan sekadar menyelesaikan tutorial, tetapi **memahami bagaimana apli
 Perjalanan belajarku mengikuti konsep:
 
 ```text
+Pre Security & Cyber Intro (TryHackMe)
+  ↓
 Linux
   ↓
 Networking
@@ -60,39 +62,48 @@ Infrastructure as Code
   ↓
 Kubernetes
   ↓
-Security
-  ↓
-DevSecOps
+Security & DevSecOps (TryHackMe + Real Projects)
 ```
 
 ---
 
 # 🧭 Peta Belajar
 
-| Fase | Minggu |     Tanggal     | Fokus                                  | Status |
-| :--: | :----: | :-------------: | :------------------------------------- | :----: |
-|  1   |  1–3   | 26 Okt – 15 Nov | Linux, Networking & Security Hardening |   ⬜   |
-|  2   |  4–6   | 16 Nov – 6 Des  | DevOps Foundation                      |   ⬜   |
-|  3   |  7–9   |   7 – 27 Des    | Cloud & Infrastructure as Code         |   ⬜   |
-|  4   | 10–13  | 28 Des – 24 Jan | Kubernetes & Container Security        |   ⬜   |
-|  5   | 14–16  | 25 Jan – 14 Feb | DevSecOps Pipeline                     |   ⬜   |
-|  6   |   17   |   15 – 21 Feb   | Advanced Security & Production         |   ⬜   |
-|  🏁  |   18   |   22 – 26 Feb   | Portfolio & Job Preparation            |   ⬜   |
+| Fase | Minggu |     Tanggal     | Fokus                                                       | Status |
+| :--: | :----: | :-------------: | :---------------------------------------------------------- | :----: |
+|  1   |  1–3   | 26 Okt – 15 Nov | TryHackMe Pre Security, Linux, Networking & Hardening       |   🔄   |
+|  2   |  4–6   | 16 Nov – 6 Des  | DevOps Foundation                                           |   ⬜   |
+|  3   |  7–9   |   7 – 27 Des    | Cloud & Infrastructure as Code                              |   ⬜   |
+|  4   | 10–13  | 28 Des – 24 Jan | Kubernetes & Container Security                             |   ⬜   |
+|  5   | 14–16  | 25 Jan – 14 Feb | DevSecOps Pipeline & TryHackMe DevSecOps                    |   ⬜   |
+|  6   |   17   |   15 – 21 Feb   | Advanced Security & Production                              |   ⬜   |
+|  🏁  |   18   |   22 – 26 Feb   | Portfolio & Job Preparation                                 |   ⬜   |
 
 ---
 
 # 🗺️ Detail Fase & Task
 
-## 🐧 Fase 1 — Linux, Networking & Security Hardening
+## 🐧 Fase 1 — TryHackMe Pre Security, Linux, Networking & Security Hardening
 
 **Minggu 1–3**
 
 ### 🎯 Target
 
-Memahami Linux sebagai environment server, networking dasar, remote access, reverse proxy, dan security hardening.
+Membangun fondasi cybersecurity melalui **TryHackMe (Pre Security)**—mulai dari pengenalan *Offensive Security*, *Defensive Security*, *Careers in Cyber*, dan cara kerja *Hardware*—serta memahami Linux sebagai environment server, networking dasar, remote access, reverse proxy, dan security hardening.
 
 ### Task
 
+#### 🛡️ TryHackMe — Cyber Security Intro & Pre Security
+- [x] Offensive Security Intro
+- [x] Defensive Security Intro
+- [x] Careers in Cyber
+- [x] Hardware & Computer Fundamentals
+- [ ] Pre Security: Network Fundamentals
+- [ ] Pre Security: How the Web Works
+- [ ] Pre Security: Linux Fundamentals
+- [ ] Pre Security: Windows Fundamentals
+
+#### 🐧 Linux, Networking & Server Hardening
 - [ ] Linux Server Fundamentals
 - [ ] User, Group & Permission
 - [ ] Process & Systemd
@@ -124,14 +135,14 @@ lab/fase-1/
 
 ### 🎯 Output Fase
 
-Mampu menyiapkan server Linux sederhana yang:
-
-- dapat diakses menggunakan SSH key
-- memiliki firewall
-- menggunakan basic security hardening
-- menjalankan aplikasi melalui Nginx reverse proxy
-- menggunakan HTTPS
-- dapat dilakukan troubleshooting ketika terjadi masalah
+1. Menyelesaikan jalur **Pre Security di TryHackMe** serta memahami konsep dasar *Offensive Security Intro*, *Defensive Security Intro*, *Careers in Cyber*, dan *Hardware Fundamentals*.
+2. Mampu menyiapkan server Linux sederhana yang:
+   - dapat diakses menggunakan SSH key
+   - memiliki firewall
+   - menggunakan basic security hardening
+   - menjalankan aplikasi melalui Nginx reverse proxy
+   - menggunakan HTTPS
+   - dapat dilakukan troubleshooting ketika terjadi masalah
 
 ---
 
@@ -290,10 +301,11 @@ Mampu:
 
 ### 🎯 Target
 
-Mengintegrasikan security ke dalam proses development dan CI/CD.
+Mengintegrasikan security ke dalam proses development dan CI/CD, serta mendalami learning path **DevSecOps di TryHackMe**.
 
 ### Task
 
+- [ ] TryHackMe — DevSecOps Learning Path
 - [ ] OWASP Top 10
 - [ ] Application Security Fundamentals
 - [ ] SAST
@@ -546,6 +558,7 @@ Contohnya:
 ```text
 catatan/
 └── fase-1-linux-networking-security/
+    ├── tryhackme-pre-security.md
     ├── linux-fundamentals.md
     ├── networking.md
     ├── ssh.md
@@ -562,6 +575,7 @@ Contohnya:
 ```text
 lab/
 └── fase-1/
+    ├── tryhackme/
     ├── linux/
     ├── networking/
     ├── ssh/
@@ -669,6 +683,7 @@ README lab menjelaskan:
 Setelah menyelesaikan perjalanan ini, targetku adalah memiliki pemahaman praktis mengenai:
 
 ```text
+TryHackMe (Pre Security & DevSecOps)
 Linux
 Networking
 SSH
@@ -763,7 +778,8 @@ Seluruh praktik cybersecurity dilakukan hanya pada:
 
 # 📚 Sumber Belajar
 
-- [roadmap.sh/devops](https://roadmap.sh/devops)
+- **TryHackMe** *(Platform lab utama: Pre Security, Cyber Security Intro, hingga DevSecOps Learning Path)*
+- [roadmap.sh/devops](https://roadmap.sh/devops) & [roadmap.sh/devsecops](https://roadmap.sh/devsecops)
 - Dokumentasi resmi Linux
 - Dokumentasi resmi Docker
 - Dokumentasi resmi Podman
@@ -776,7 +792,6 @@ Seluruh praktik cybersecurity dilakukan hanya pada:
 - Dokumentasi resmi Grafana
 - OWASP
 - PortSwigger Web Security Academy
-- TryHackMe
 
 ---
 
