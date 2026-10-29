@@ -38,6 +38,7 @@ Tujuannya bukan sekadar menyelesaikan tutorial, tetapi **memahami bagaimana apli
 ## 🙋 Tentang Saya
 
 - 🎓 Siswa SMK yang sedang PKL di bidang fullstack
+- 📜 Memiliki sertifikat **Pengenalan ke DevOps (Dicoding)**
 - 🐧 Memiliki sertifikat **Red Hat Container**
 - 🔐 Tertarik pada cybersecurity sejak SMP & aktif belajar di **TryHackMe**
 - ⚙️ Sedang membangun kemampuan di bidang DevOps
@@ -156,6 +157,7 @@ Memahami automation, version control, container, dan environment aplikasi sebaga
 
 ### Task
 
+- [x] Pengenalan ke DevOps (Dicoding: Prinsip The Three Ways, CALMS, Pipeline, Studi Kasus Amazon)
 - [ ] Bash Fundamentals
 - [ ] Bash Scripting
 - [ ] Python Dasar untuk Automation
