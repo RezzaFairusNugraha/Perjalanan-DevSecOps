@@ -105,7 +105,7 @@ Membangun fondasi cybersecurity melalui **TryHackMe (Pre Security)**—mulai dar
 - [ ] Pre Security: Windows Fundamentals
 
 #### 🐧 Linux, Networking & Server Hardening
-- [ ] Linux Server Fundamentals
+- [ ] Linux Server Fundamentals (Hack The Box Academy: Linux Fundamentals - 38% [ls, cp, mv, find, locate])
 - [ ] User, Group & Permission
 - [ ] Process & Systemd
 - [ ] Package Management
