@@ -105,7 +105,7 @@ Membangun fondasi cybersecurity melalui **TryHackMe (Pre Security)**—mulai dar
 - [ ] Pre Security: Windows Fundamentals
 
 #### 🐧 Linux, Networking & Server Hardening
-- [ ] Linux Server Fundamentals (HTB Academy: Linux Fundamentals 38% & Persiapan Event Red Hat)
+- [ ] Linux Server Fundamentals (HTB Academy: 38% & Selesai Meet/Quiz Red Hat: SysAdmin & Container)
 - [ ] User, Group & Permission
 - [ ] Process & Systemd
 - [ ] Package Management
