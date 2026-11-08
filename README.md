@@ -40,7 +40,7 @@ Tujuannya bukan sekadar menyelesaikan tutorial, tetapi **memahami bagaimana apli
 - 🎓 Siswa SMK yang sedang PKL di bidang fullstack
 - 📜 Memiliki sertifikat **Pengenalan ke DevOps (Dicoding)**
 - 🐧 Memiliki sertifikat **Red Hat Container**
-- 🔐 Tertarik pada cybersecurity sejak SMP & aktif belajar di **TryHackMe**
+- 🔐 Tertarik pada cybersecurity sejak SMP, aktif belajar di **TryHackMe**, dan membuat konten edukasi cybersecurity (@WhiteExploit)
 - ⚙️ Sedang membangun kemampuan di bidang DevOps
 - ☁️ Tertarik pada Cloud dan Infrastructure
 - 🛡️ Target jangka panjang: **DevSecOps / Security Engineering**
