@@ -40,7 +40,8 @@ Tujuannya bukan sekadar menyelesaikan tutorial, tetapi **memahami bagaimana apli
 - 🎓 Siswa SMK yang sedang PKL di bidang fullstack
 - 📜 Memiliki sertifikat **Pengenalan ke DevOps (Dicoding)**
 - 🐧 Memiliki sertifikat **Red Hat Container**
-- 🔐 Tertarik pada cybersecurity sejak SMP, aktif belajar di **TryHackMe**, dan membuat konten edukasi cybersecurity (@WhiteExploit)
+- 🔐 Tertarik pada cybersecurity sejak SMP, aktif belajar di **TryHackMe**, **Hack The Box Academy**, dan membuat konten edukasi cybersecurity (@WhiteExploit)
+- 🐳 Sedang mempersiapkan ujian sertifikasi **Red Hat Certified Specialist in Containers (EX188)** dengan VM **Rocky Linux 9 (Minimal Server)** & **Podman**
 - ⚙️ Sedang membangun kemampuan di bidang DevOps
 - ☁️ Tertarik pada Cloud dan Infrastructure
 - 🛡️ Target jangka panjang: **DevSecOps / Security Engineering**
@@ -105,7 +106,7 @@ Membangun fondasi cybersecurity melalui **TryHackMe (Pre Security)**—mulai dar
 - [ ] Pre Security: Windows Fundamentals
 
 #### 🐧 Linux, Networking & Server Hardening
-- [ ] Linux Server Fundamentals (HTB Academy: 38% & Selesai Meet/Quiz Red Hat: SysAdmin & Container)
+- [ ] Linux Server Fundamentals (VM: **Rocky Linux 9 Minimal** | HTB Academy: 38% & Meet/Quiz Red Hat)
 - [ ] User, Group & Permission
 - [ ] Process & Systemd
 - [ ] Package Management
@@ -781,6 +782,9 @@ Seluruh praktik cybersecurity dilakukan hanya pada:
 # 📚 Sumber Belajar
 
 - **TryHackMe** *(Platform lab utama: Pre Security, Cyber Security Intro, hingga DevSecOps Learning Path)*
+- **Hack The Box Academy** *(Linux Fundamentals & dasar keamanan sistem)*
+- **Dicoding** *(Kelas Pengenalan ke DevOps)*
+- **Rocky Linux 9 (Minimal Server VM)** *(Lab praktik SysAdmin, SELinux, & persiapan ujian Red Hat EX188)*
 - [roadmap.sh/devops](https://roadmap.sh/devops) & [roadmap.sh/devsecops](https://roadmap.sh/devsecops)
 - Dokumentasi resmi Linux
 - Dokumentasi resmi Docker
