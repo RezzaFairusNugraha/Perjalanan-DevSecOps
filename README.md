@@ -165,7 +165,7 @@ Memahami automation, version control, container, dan environment aplikasi sebaga
 - [ ] Git Branching & Workflow
 - [ ] GitHub
 - [ ] Docker Fundamentals
-- [ ] Podman Fundamentals
+- [x] Podman Fundamentals (Persiapan Exam Red Hat EX188: Rootless, Containerfile, Volume SELinux, Pod, Systemd)
 - [ ] Dockerfile / Containerfile
 - [ ] Image & Container
 - [ ] Volume
