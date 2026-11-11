@@ -167,11 +167,11 @@ Memahami automation, version control, container, dan environment aplikasi sebaga
 - [ ] GitHub
 - [ ] Docker Fundamentals
 - [x] Podman Fundamentals (Persiapan Exam Red Hat EX188: Rootless, Containerfile, Volume SELinux, Pod, Systemd)
-- [ ] Dockerfile / Containerfile
-- [ ] Image & Container
-- [ ] Volume
+- [x] Dockerfile / Containerfile (EX188 Exercise 02: Custom Image UBI9 Non-Root & Push ke Local Registry)
+- [x] Image & Container (EX188 Exercise 01: Container Lifecycle, Inspect, Exec, Podman CP)
+- [x] Volume (EX188 Exercise 03: Bind Mount SELinux `:Z`, Read-Only `:ro`, & Named Volume)
 - [ ] Network
-- [ ] Environment Variables
+- [x] Environment Variables (EX188 Exercise 01: Passing `-e` & Verifikasi Logs)
 - [ ] Docker/Podman Compose
 - [ ] Multi-container Application
 - [ ] Container Troubleshooting

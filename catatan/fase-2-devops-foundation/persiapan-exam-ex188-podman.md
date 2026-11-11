@@ -110,8 +110,9 @@ loginctl enable-linger $USER
 ## 💻 Checklist Persiapan EX188
 
 - [x] Memahami konsep rootless & daemonless container di Podman.
-- [ ] Latihan membuat dan memodifikasi `Containerfile` dengan UBI (Universal Base Image).
-- [ ] Latihan konfigurasi volume dengan izin SELinux (`:Z`).
+- [x] **Exercise 01 — Container Basics** (`run`, `inspect`, `exec`, `cp`, `env`, cleanup).
+- [x] **Exercise 02 — Image Management** (membuat `Containerfile` UBI9 non-root, build, tag, push ke registry lokal, `skopeo`).
+- [x] **Exercise 03 — Persistent Storage** (bind mount, read-only `:ro`, SELinux label `:Z`, dan named volume).
 - [ ] Latihan membuat Podman Pods dan export ke Kubernetes YAML.
 - [ ] Latihan konfigurasi container sebagai service systemd user.
 - [ ] Simulasi pengerjaan soal lab sesuai batas waktu ujian.
