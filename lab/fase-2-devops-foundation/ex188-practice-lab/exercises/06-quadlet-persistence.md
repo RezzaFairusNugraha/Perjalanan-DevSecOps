@@ -1,5 +1,11 @@
 # Exercise 06 — Persistence across Reboot (Quadlet)
 
+> Objective resmi hanya menulis: *"configurations must persist after reboot without intervention"*
+> — systemd tidak disebut eksplisit. Cara yang pasti bertahan: Quadlet/systemd. `--restart=always`
+> saja **tidak cukup** untuk rootless setelah reboot tanpa `podman-restart.service` + linger
+> (`systemctl --user enable podman-restart.service`). Volume/network/secret sudah persisten sendiri.
+> Cek sintaks di ujian lewat `man podman-systemd.unit` (jika tersedia).
+
 > `podman generate systemd` deprecated. Pada Podman 5 / RHEL 10 pakai **Quadlet**
 > (`man podman-systemd.unit`). Rootless: `~/.config/containers/systemd/`.
 

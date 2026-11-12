@@ -17,7 +17,14 @@
 7. **Akses jaringan/host**: tunjukkan beda `--network none`, `--network host`,
    `-p 127.0.0.1:8082:8080`. Jelaskan kenapa rootless tidak boleh `-p 80:80`.
 8. Jangan pakai `--privileged` kecuali diminta; jelaskan risikonya.
-9. Cleanup volume: `podman volume prune`, `podman volume rm`.
+9. **Lifecycle & cleanup** bind mount/volume: `podman rm` **tidak** menghapus volume (kecuali `-v`/`--volumes`);
+   file di host tetap ada. `podman volume prune`, `podman volume rm`, `podman rm -v`.
+   Label `:Z` mengubah label SELinux direktori host secara permanen — pulihkan dengan `restorecon -Rv DIR`.
+10. **Database (DO188 bab 5)**: jalankan `quay.io/fedora/mariadb-1011`/`postgresql-16` dengan volume
+    + env (`MYSQL_USER`, `MYSQL_PASSWORD`, `MYSQL_DATABASE`), buat tabel, hapus container, jalankan ulang
+    dengan volume sama; data harus tetap ada. Akses dengan `podman exec -it db mysql -u...`.
+11. **Rootless Podman (DO188 bab 4)**: `podman unshare cat /proc/self/uid_map`, `grep $USER /etc/subuid`,
+    `podman info | grep -i rootless`, storage di `~/.local/share/containers`, port < 1024 diblok.
 
 ## Verifikasi
 `podman volume ls`, `podman inspect persistent-web --format '{{range .Mounts}}{{.Source}} {{.RW}}{{end}}'`.

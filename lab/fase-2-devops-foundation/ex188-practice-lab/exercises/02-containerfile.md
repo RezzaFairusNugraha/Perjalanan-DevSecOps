@@ -35,5 +35,18 @@
    dengan `COPY --from=builder`.
 9. Perbedaan **ARG vs ENV**: ARG hanya saat build; ENV ikut ke runtime. Verifikasi dengan `podman run --rm IMAGE env`.
 
+10. **ADD vs COPY**: buat `site.tar.gz` dan `extra.txt`. Dalam Containerfile uji:
+    `ADD site.tar.gz /opt/site/` (otomatis **extract**), `COPY site.tar.gz /opt/raw/` (tidak extract),
+    `ADD https://.../file /opt/` (bisa URL; COPY tidak). Bandingkan dengan `podman run --rm IMG ls -R /opt`.
+    Aturan: pakai `COPY` kecuali butuh auto-extract tar lokal. Gunakan `COPY --chown=1001:0` dan `--chmod`.
+11. **ENTRYPOINT dengan parameter**: bentuk exec `ENTRYPOINT ["python3","-m","http.server"]` + `CMD ["8080"]`;
+    argumen setelah nama image **mengganti CMD** (`podman run IMG 9090`). `--entrypoint` mengganti ENTRYPOINT.
+    Bandingkan bentuk shell (`ENTRYPOINT python3 app.py`, jalan di bawah `/bin/sh -c`, PID 1 bukan app).
+12. **Security**: base image minimal/UBI, `USER` non-root, `RUN` digabung + `microdnf clean all`, jangan simpan
+    secret di `ENV`/`ARG`/layer (terlihat di `podman history`), grup root (GID 0) + `chmod g=u` agar
+    cocok dengan OpenShift (UID acak), `EXPOSE` hanya dokumentasi (tetap perlu `-p`), port > 1024.
+    Buktikan: `podman history --no-trunc IMG | grep -i pass`.
+13. **ENV vs ARG**: `podman build --build-arg X=1`; ENV bisa di-override `-e` saat run.
+
 ## Verifikasi
 `podman run --rm localhost:5000/webapp:v1 id -u` → `1001`; `curl` menampilkan `Hello from EX188`.

@@ -3,9 +3,25 @@
 Lab latihan tidak resmi untuk ujian **EX188** (hands-on, 2,5 jam). Berbasis **RHEL 10 + Podman v5**
 (isi tetap berlaku untuk Podman 4.x/5.x dan OpenShift 4.x). Bukan produk resmi Red Hat.
 
-> Catatan: nama sertifikasi saat ini adalah *Red Hat Certified Developer in Cloud-native Applications*
-> (sebelumnya disebut "Specialist in Containers"). Ujian **tidak** memakai pilihan ganda: kamu
-> mengerjakan task di sistem live, dinilai dari hasil akhir.
+> **Versi ujian:** `EX188K` / **V4** = *Red Hat Certified Specialist in Containers*;
+> **V5** = *Red Hat Certified Developer in Cloud-native Applications* (Podman 5, RHEL 10).
+> Lab ini mencakup **kedua versi** (objective V4 lebih rinci: ADD vs COPY, ENTRYPOINT + param, security).
+> Ujian **tidak** pilihan ganda: task dikerjakan di sistem live. Boleh ada aplikasi pre-written; kode
+> tidak perlu diubah, tapi kamu harus membaca dokumentasi yang diberikan untuk membuat deployment baru.
+> **Semua konfigurasi harus persisten setelah reboot tanpa intervensi.**
+
+## Pemetaan Bab DO188 → Exercise
+
+| Bab DO188 | Exercise |
+|---|---|
+| 2 Podman Basics (networking, accessing, lifecycle) | 01 |
+| 3 Container Images (registries, managing images) | 03 |
+| 4 Custom Images (Containerfile, advanced, **rootless**) | 02, 04 |
+| 5 Persisting Data (volume, **databases**) | 04 |
+| 6 Troubleshooting (logging, **remote debugging**) | 07 |
+| 7 Compose | 05 |
+| 8 OpenShift/Kubernetes (di luar objective, tapi ada di kursus) | 08 (opsional) |
+| 9 Comprehensive Review | mock-exam |
 
 ## Pemetaan Objective Resmi → Exercise
 
