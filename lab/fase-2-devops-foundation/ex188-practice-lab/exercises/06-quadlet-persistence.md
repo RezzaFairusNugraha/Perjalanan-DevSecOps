@@ -1,44 +1,101 @@
-# Exercise 06 — Persistence across Reboot (Quadlet)
+# Exercise 06: Persistence After Reboot (Quadlet)
 
-> Objective resmi hanya menulis: *"configurations must persist after reboot without intervention"*
-> — systemd tidak disebut eksplisit. Cara yang pasti bertahan: Quadlet/systemd. `--restart=always`
-> saja **tidak cukup** untuk rootless setelah reboot tanpa `podman-restart.service` + linger
-> (`systemctl --user enable podman-restart.service`). Volume/network/secret sudah persisten sendiri.
-> Cek sintaks di ujian lewat `man podman-systemd.unit` (jika tersedia).
+**Objective:** configuration must survive a reboot without manual action.
 
-> `podman generate systemd` deprecated. Pada Podman 5 / RHEL 10 pakai **Quadlet**
-> (`man podman-systemd.unit`). Rootless: `~/.config/containers/systemd/`.
+**Time:** 20 minutes
 
-## Tasks
+## Background
 
-1. `loginctl enable-linger $USER` agar service user hidup tanpa login.
-2. Buat `~/.config/containers/systemd/auto-web.container`:
-   ```ini
-   [Unit]
-   Description=Auto web
-   After=network-online.target
+The official objectives only say that configuration must persist after reboot. They do not name systemd.
+The reliable way is a **Quadlet** file, which systemd turns into a service.
 
-   [Container]
-   ContainerName=auto-web
-   Image=registry.access.redhat.com/ubi9/httpd-24
-   PublishPort=8082:8080
-   Volume=%h/ex188-data/html:/var/www/html:ro,Z
-   Environment=EXAM=ex188
+| Method | Survives reboot (rootless)? |
+|---|---|
+| `--restart=always` only | **No**, unless `podman-restart.service` is enabled and lingering is on |
+| `podman generate systemd` | Works, but **deprecated** |
+| **Quadlet `.container` file** | **Yes** (recommended) |
 
-   [Service]
-   Restart=always
+Volumes, networks, and secrets already persist on their own.
+Syntax reference: `man podman-systemd.unit`.
 
-   [Install]
-   WantedBy=default.target
-   ```
-3. `systemctl --user daemon-reload && systemctl --user start auto-web.service`
-   (unit `[Install]` di Quadlet bersifat *generated*; aktif lewat `WantedBy`, tidak perlu `enable`).
-   Debug: `/usr/lib/systemd/system-generators/podman-system-generator --user --dryrun`.
-4. Verifikasi: `systemctl --user status auto-web`, `podman ps`, `curl 127.0.0.1:8082`,
-   `journalctl --user -u auto-web`.
-5. Quadlet lain: `.volume`, `.network`, `.kube` (`Yaml=web-pod.yaml`), `.pod`.
-6. Auto-update (bonus): `AutoUpdate=registry`, `systemctl --user enable --now podman-auto-update.timer`.
-7. Uji `systemctl --user restart auto-web` dan, bila boleh, **reboot**.
+## Task 1: Enable lingering
 
-## Verifikasi
-Container kembali berjalan setelah reboot tanpa perintah manual.
+Without lingering, a user's services stop at logout and do not start at boot.
+
+```bash
+loginctl enable-linger $USER
+loginctl show-user $USER -p Linger      # Linger=yes
+```
+
+## Task 2: Create the Quadlet file
+
+Create the folder and file `~/.config/containers/systemd/auto-web.container`:
+
+```bash
+mkdir -p ~/.config/containers/systemd
+cat > ~/.config/containers/systemd/auto-web.container <<'EOF'
+[Unit]
+Description=Auto web
+After=network-online.target
+
+[Container]
+ContainerName=auto-web
+Image=registry.access.redhat.com/ubi9/httpd-24
+PublishPort=8082:8080
+Volume=%h/ex188-data/html:/var/www/html:ro,Z
+Environment=EXAM=ex188
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
+EOF
+```
+
+## Task 3: Start the service
+
+```bash
+systemctl --user daemon-reload
+systemctl --user start auto-web.service
+```
+
+Quadlet services are generated, so you do not run `enable`. The `[Install]` section makes them start at boot.
+
+If the unit does not appear, check for syntax errors:
+
+```bash
+/usr/lib/systemd/system-generators/podman-system-generator --user --dryrun
+```
+
+## Task 4: Verify
+
+```bash
+systemctl --user status auto-web
+podman ps
+curl http://127.0.0.1:8082
+journalctl --user -u auto-web
+systemctl --user restart auto-web
+```
+
+## Task 5: Other Quadlet types (read about them)
+
+| File | Creates |
+|---|---|
+| `.container` | A container |
+| `.volume` | A named volume |
+| `.network` | A network |
+| `.pod` | A pod |
+| `.kube` | A Kubernetes YAML deployment |
+
+## Task 6 (bonus): Auto-update
+
+Add `AutoUpdate=registry` under `[Container]`, then:
+
+```bash
+systemctl --user enable --now podman-auto-update.timer
+```
+
+## Check your work
+
+Reboot the machine. After login (or even without login), `curl http://127.0.0.1:8082` still works.

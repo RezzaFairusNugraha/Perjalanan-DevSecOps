@@ -1,30 +1,135 @@
-# Exercise 04 — Volumes, Host Data, Security & Permissions
+# Exercise 04: Volumes, Permissions, and Security
 
-## Tasks
+**Objectives:** share host data with a container, named volumes, SELinux, rootless permissions, host and network access, lifecycle and cleanup.
 
-1. **Bind mount + SELinux**: jalankan `persistent-web` (`ubi9/httpd-24`) dengan
-   `-v ~/ex188-data/html:/var/www/html:Z -p 8080:8080`. `curl` harus menampilkan isi `index.html`.
-   Ubah file di host, curl lagi. Kenapa `:Z` vs `:z`? Cek `ls -Z`.
-2. **Read-only**: ulangi dengan `:ro,Z`; tulis dari dalam container harus gagal.
-3. **Named volume**: `podman volume create my-db-data`; `db-test` menulis `/data/file.txt`;
-   hapus container; `db-verify` mengonfirmasi file masih ada. `podman volume inspect` (cari `Mountpoint`).
-4. **Rootless UID mapping**: bind-mount `~/ex188-data/mysql` untuk container user 1001.
-   Selesaikan `Permission denied` dengan salah satu:
-   `--userns=keep-id:uid=1001,gid=1001` atau `podman unshare chown 1001:1001 ~/ex188-data/mysql`.
-5. **tmpfs & anonymous volume**: `--tmpfs /tmp:rw,size=16m`; `--mount type=bind,src=...,dst=...,ro`.
-6. **Hak istimewa**: jalankan container `--cap-drop=ALL --cap-add=NET_BIND_SERVICE --read-only
-   --security-opt no-new-privileges`. Cek `podman inspect` → `HostConfig.CapDrop`, `ReadonlyRootfs`.
-7. **Akses jaringan/host**: tunjukkan beda `--network none`, `--network host`,
-   `-p 127.0.0.1:8082:8080`. Jelaskan kenapa rootless tidak boleh `-p 80:80`.
-8. Jangan pakai `--privileged` kecuali diminta; jelaskan risikonya.
-9. **Lifecycle & cleanup** bind mount/volume: `podman rm` **tidak** menghapus volume (kecuali `-v`/`--volumes`);
-   file di host tetap ada. `podman volume prune`, `podman volume rm`, `podman rm -v`.
-   Label `:Z` mengubah label SELinux direktori host secara permanen — pulihkan dengan `restorecon -Rv DIR`.
-10. **Database (DO188 bab 5)**: jalankan `quay.io/fedora/mariadb-1011`/`postgresql-16` dengan volume
-    + env (`MYSQL_USER`, `MYSQL_PASSWORD`, `MYSQL_DATABASE`), buat tabel, hapus container, jalankan ulang
-    dengan volume sama; data harus tetap ada. Akses dengan `podman exec -it db mysql -u...`.
-11. **Rootless Podman (DO188 bab 4)**: `podman unshare cat /proc/self/uid_map`, `grep $USER /etc/subuid`,
-    `podman info | grep -i rootless`, storage di `~/.local/share/containers`, port < 1024 diblok.
+**Time:** 40 minutes. Run `./lab-setup.sh` first.
 
-## Verifikasi
-`podman volume ls`, `podman inspect persistent-web --format '{{range .Mounts}}{{.Source}} {{.RW}}{{end}}'`.
+## Task 1: Bind mount with SELinux
+
+```bash
+podman run -d --name persistent-web -p 8080:8080 \
+  -v ~/ex188-data/html:/var/www/html:Z \
+  registry.access.redhat.com/ubi9/httpd-24
+curl http://127.0.0.1:8080
+```
+
+Change the file on the host and `curl` again. The change appears at once.
+
+| Option | Meaning |
+|---|---|
+| `:Z` | Private label. Only this container can use the data |
+| `:z` | Shared label. Several containers can use the data |
+| `:ro` | Read-only |
+
+Check the label with `ls -Zd ~/ex188-data/html`.
+
+## Task 2: Read-only mount
+
+```bash
+podman rm -f persistent-web
+podman run -d --name persistent-web -p 8080:8080 \
+  -v ~/ex188-data/html:/var/www/html:ro,Z registry.access.redhat.com/ubi9/httpd-24
+podman exec persistent-web touch /var/www/html/x
+```
+
+**Expected:** `Read-only file system` error.
+
+## Task 3: Named volume
+
+```bash
+podman volume create my-db-data
+podman run --name db-test -v my-db-data:/data:Z registry.access.redhat.com/ubi9/ubi \
+  sh -c 'echo persisted > /data/file.txt'
+podman rm db-test
+podman run --rm --name db-verify -v my-db-data:/data:Z registry.access.redhat.com/ubi9/ubi cat /data/file.txt
+podman volume inspect my-db-data --format '{{.Mountpoint}}'
+```
+
+**Expected:** `persisted`. The volume survives the container.
+
+## Task 4: Rootless UID mapping
+
+A non-root user inside the container maps to a different UID on the host. Fix `Permission denied` on a bind mount in one of two ways:
+
+```bash
+# Option A: map your user to the container user
+podman run --rm --userns=keep-id:uid=1001,gid=1001 --user 1001 \
+  -v ~/ex188-data/mysql:/data:Z registry.access.redhat.com/ubi9/ubi touch /data/ok
+
+# Option B: change the owner inside the user namespace
+podman unshare chown 1001:1001 ~/ex188-data/mysql
+```
+
+## Task 5: Database with persistent data
+
+```bash
+podman volume create pgdata
+podman run -d --name db -v pgdata:/var/lib/pgsql/data:Z \
+  -e POSTGRESQL_USER=app -e POSTGRESQL_PASSWORD=secret -e POSTGRESQL_DATABASE=appdb \
+  quay.io/fedora/postgresql-16
+podman exec db psql -U app appdb -c 'CREATE TABLE t(id int); INSERT INTO t VALUES (1);'
+podman rm -f db
+podman run -d --name db -v pgdata:/var/lib/pgsql/data:Z \
+  -e POSTGRESQL_USER=app -e POSTGRESQL_PASSWORD=secret -e POSTGRESQL_DATABASE=appdb \
+  quay.io/fedora/postgresql-16
+podman exec db psql -U app appdb -c 'SELECT * FROM t;'
+```
+
+**Expected:** the row still exists.
+
+## Task 6: tmpfs and the `--mount` syntax
+
+```bash
+podman run --rm --tmpfs /tmp:rw,size=16m registry.access.redhat.com/ubi9/ubi df -h /tmp
+podman run --rm --mount type=bind,src=$HOME/ex188-data/html,dst=/mnt,ro,relabel=private \
+  registry.access.redhat.com/ubi9/ubi ls /mnt
+```
+
+## Task 7: Reduce privileges
+
+```bash
+podman run -d --name hardened --cap-drop=ALL --read-only --security-opt no-new-privileges \
+  registry.access.redhat.com/ubi9/ubi sleep 600
+podman inspect hardened --format 'Drop={{.HostConfig.CapDrop}} ReadOnly={{.HostConfig.ReadonlyRootfs}}'
+```
+
+Do not use `--privileged` unless a task requires it. It gives the container nearly full host access.
+
+## Task 8: Host and network access
+
+| Option | Effect |
+|---|---|
+| `-p 127.0.0.1:8082:8080` | Reachable from the host only |
+| `-p 8082:8080` | Reachable from all interfaces |
+| `--network none` | No network at all |
+| `--network host` | Shares the host network stack |
+
+Rootless users cannot publish ports below 1024 (`-p 80:80` fails).
+
+## Task 9: Rootless facts
+
+```bash
+podman unshare cat /proc/self/uid_map
+grep $USER /etc/subuid
+podman info --format '{{.Host.Security.Rootless}}'
+```
+
+Rootless storage lives in `~/.local/share/containers`.
+
+## Task 10: Lifecycle and cleanup
+
+- `podman rm` does **not** delete named volumes. Use `podman rm -v` or `podman volume rm`.
+- Host folders used as bind mounts stay on the host after the container is removed.
+- `:Z` relabels the host folder permanently. Restore with `restorecon -Rv ~/ex188-data/html`.
+
+```bash
+podman rm -af
+podman volume prune -f
+```
+
+## Check your work
+
+```bash
+podman volume ls
+podman inspect persistent-web --format '{{range .Mounts}}{{.Source}} writable={{.RW}}{{end}}'
+```
