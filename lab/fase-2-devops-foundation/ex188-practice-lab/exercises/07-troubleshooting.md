@@ -68,3 +68,14 @@ podman system df
 ## Check your work
 
 All five containers run without errors in `podman logs`, and `./grade-lab.sh 07` passes.
+
+## Find it in the man pages
+
+No internet in the exam. Practice finding each item.
+
+| Need | Command | Search for |
+|---|---|---|
+| Run a command inside | `man podman-exec` | `/--interactive` |
+| Filter logs by time | `man podman-logs` | `/--since` |
+| Run a health check | `man podman-healthcheck-run` | - |
+| Resource usage | `man podman-stats` | `/--no-stream` |

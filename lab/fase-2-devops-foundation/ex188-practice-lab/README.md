@@ -14,7 +14,11 @@ An unofficial, hands-on practice lab for the Red Hat **EX188** exam (Podman, con
 | **Key rule** | Configuration must **persist after reboot** without manual action |
 | **Applications** | You may get pre-written apps. You do not change their code, but you may need the supplied docs to deploy them |
 
-This lab covers the objectives of **both** versions.
+This lab targets **V5 (RHEL 10, Podman 5)** and also covers the V4 objectives.
+
+**Documentation rules:** there is no internet in the exam, and you cannot bring notes. Only the documentation that
+ships with the product is available (man pages, `/usr/share/doc`). Every exercise ends with a
+**Find it in the man pages** section. Practice these lookups instead of memorizing commands.
 
 ## Exercises
 

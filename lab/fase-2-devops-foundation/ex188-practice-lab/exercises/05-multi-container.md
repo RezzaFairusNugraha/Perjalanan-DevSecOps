@@ -128,3 +128,15 @@ podman ps --pod
 podman secret ls
 podman network ls
 ```
+
+## Find it in the man pages
+
+No internet in the exam. Practice finding each item.
+
+| Need | Command | Search for |
+|---|---|---|
+| Create a secret | `man podman-secret-create` | `/--driver` |
+| Use a secret | `man podman-run` | `/--secret` |
+| Compose wrapper | `man podman-compose` | - |
+| Create a pod | `man podman-pod-create` | `/--publish` |
+| Kube YAML | `man podman-kube-play` | `/EXAMPLES` |

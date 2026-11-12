@@ -99,3 +99,12 @@ systemctl --user enable --now podman-auto-update.timer
 ## Check your work
 
 Reboot the machine. After login (or even without login), `curl http://127.0.0.1:8082` still works.
+
+## Find it in the man pages
+
+No internet in the exam. Practice finding each item.
+
+| Need | Command | Search for |
+|---|---|---|
+| Quadlet keys (`PublishPort`, `Volume`) | `man podman-systemd.unit` | `/PublishPort` |
+| Enable linger | `man loginctl` | `/enable-linger` |

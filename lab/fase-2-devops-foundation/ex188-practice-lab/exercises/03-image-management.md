@@ -132,3 +132,15 @@ podman image prune -a -f
 skopeo list-tags --tls-verify=false docker://localhost:5000/webapp
 ls -lh /tmp/webapp.tar /tmp/web1-fs.tar
 ```
+
+## Find it in the man pages
+
+No internet in the exam. Practice finding each item.
+
+| Need | Command | Search for |
+|---|---|---|
+| Registry settings | `man containers-registries.conf` | `/insecure` |
+| Login and auth file | `man podman-login` | `/auth.json` |
+| Save formats | `man podman-save` | `/--format` |
+| Import with changes | `man podman-import` | `/--change` |
+| Copy between registries | `man skopeo-copy` | `/--dest-tls-verify` |

@@ -133,3 +133,14 @@ podman volume prune -f
 podman volume ls
 podman inspect persistent-web --format '{{range .Mounts}}{{.Source}} writable={{.RW}}{{end}}'
 ```
+
+## Find it in the man pages
+
+No internet in the exam. Practice finding each item.
+
+| Need | Command | Search for |
+|---|---|---|
+| Volume options | `man podman-run` | `/--volume` |
+| SELinux labels | `man podman-run` | `/:Z` |
+| User namespaces | `man podman-run` | `/--userns` |
+| Rootless limits | `man podman` | `/rootless` |

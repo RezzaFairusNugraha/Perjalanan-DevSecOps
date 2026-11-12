@@ -138,3 +138,13 @@ Use a `builder` stage and copy only the result into a final `ubi9/ubi-minimal` s
 podman run --rm localhost:5000/webapp:v1 -c 'import os; print(os.getuid())'   # 1001
 curl http://127.0.0.1:8081                                                    # Hello from EX188
 ```
+
+## Find it in the man pages
+
+No internet in the exam. Practice finding each item.
+
+| Need | Command | Search for |
+|---|---|---|
+| Instruction syntax | `man containerfile` | `/ENTRYPOINT` |
+| ADD vs COPY | `man containerfile` | `/^ *ADD` |
+| Build arguments | `man podman-build` | `/--build-arg` |

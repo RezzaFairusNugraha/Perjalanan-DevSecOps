@@ -97,3 +97,15 @@ podman rm -af
 
 - `podman ps -a` shows no leftover containers.
 - `podman logs my-env` showed `exam=ex188` before you removed it.
+
+## Find it in the man pages
+
+No internet in the exam. Practice finding each item.
+
+| Need | Command | Search for |
+|---|---|---|
+| Publish a port | `man podman-run` | `/--publish` |
+| Environment file | `man podman-run` | `/--env-file` |
+| Format inspect output | `man podman-inspect` | `/--format` |
+| Filter events | `man podman-events` | `/--filter` |
+| Restart policy | `man podman-run` | `/--restart` |
