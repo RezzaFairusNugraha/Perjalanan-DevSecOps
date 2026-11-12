@@ -4,6 +4,24 @@ Roadmap ini disusun dari target di README: **Junior DevOps / Cloud / DevSecOps**
 
 > Urutan sertifikasi dan perkiraan waktu di bawah adalah **saran**, bukan aturan. Sesuaikan dengan kondisi dan biaya. Cek syarat dan harga terbaru di situs resmi masing-masing penyelenggara.
 
+## Jalur yang dipilih: kerja sambil kuliah
+
+Waktu belajar terbatas, jadi urutannya dibuat ringan dan bertahap.
+
+| Periode | Kerja | Kuliah dan belajar | Sertifikasi |
+|---|---|---|---|
+| Nov 2026 – Feb 2027 | PKL | Selesaikan Fase 1–6 dan 2 proyek pertama | **EX188** |
+| Feb – Agu 2027 | Cari kerja **paruh waktu, magang, atau remote junior** (DevOps, IT infrastruktur, SysAdmin) | Semester awal: pilih jurusan terkait (TI, Sistem Informasi, Teknik Komputer) | Terraform Associate, lalu AWS SAA |
+| Agu 2027 – 2028 | Lanjut kerja, minta tanggung jawab di CI/CD, container, atau cloud | Jadikan tugas kuliah sebagai proyek portofolio bila bisa | **CKA** |
+| 2028 – 2029 | Naik ke DevOps / Cloud Engineer penuh waktu atau paruh waktu | Skripsi bertema keamanan container atau CI/CD | **CKS** atau Security+ |
+| 2029+ | Lulus kuliah, pengalaman kerja sekitar 2 tahun | | Spesialisasi DevSecOps |
+
+**Aturan menjaga beban:**
+- Hanya satu sertifikasi pada satu waktu, jauhkan dari minggu ujian kuliah.
+- Targetkan 8–10 jam belajar per minggu saat semester padat.
+- Pilih kerja yang fleksibel. Pengalaman 6 bulan di bidang yang tepat lebih bernilai daripada gaji besar di bidang yang tidak terkait.
+- Biaya ujian ditanggung dari gaji atau minta perusahaan membayar. Mulai dari yang murah (Terraform, AWS).
+
 ## Gambaran besar
 
 ```text
