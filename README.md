@@ -106,7 +106,7 @@ Membangun fondasi cybersecurity melalui **TryHackMe (Pre Security)**—mulai dar
 - [ ] Pre Security: Windows Fundamentals
 
 #### 🐧 Linux, Networking & Server Hardening
-- [ ] Linux Server Fundamentals (VM: **Rocky Linux 9 Minimal** | HTB Academy: 38% & Meet/Quiz Red Hat)
+- [ ] Linux Server Fundamentals (VM: **Rocky Linux 9 Minimal** | HTB Academy: 38% | **Kursus Udemy: Linux Fundamentals**)
 - [ ] User, Group & Permission
 - [ ] Process & Systemd
 - [ ] Package Management
@@ -783,6 +783,7 @@ Seluruh praktik cybersecurity dilakukan hanya pada:
 
 - **TryHackMe** *(Platform lab utama: Pre Security, Cyber Security Intro, hingga DevSecOps Learning Path)*
 - **Hack The Box Academy** *(Linux Fundamentals & dasar keamanan sistem)*
+- **Udemy** *(Kursus Linux Fundamentals & Administrasi Sistem)*
 - **Dicoding** *(Kelas Pengenalan ke DevOps)*
 - **Rocky Linux 9 (Minimal Server VM)** *(Lab praktik SysAdmin, SELinux, & persiapan ujian Red Hat EX188)*
 - [roadmap.sh/devops](https://roadmap.sh/devops) & [roadmap.sh/devsecops](https://roadmap.sh/devsecops)
