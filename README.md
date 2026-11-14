@@ -4,7 +4,7 @@
 
 **Dokumentasi perjalanan belajarku dari Linux, DevOps, Cloud, hingga DevSecOps melalui catatan, lab praktik, dan proyek nyata.**
 
-TryHackMe · Linux · Networking · Docker · CI/CD · AWS · Terraform · Kubernetes · Cybersecurity · DevSecOps
+TryHackMe · Redhat · Linux · Networking · Docker · CI/CD · AWS · Terraform · Kubernetes · Cybersecurity · DevSecOps
 
 </div>
 
