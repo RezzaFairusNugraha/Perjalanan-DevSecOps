@@ -571,18 +571,19 @@ catatan/
 
 ### `lab/`
 
-Berisi **apa yang kupraktikkan**.
+Berisi **apa yang kupraktikkan secara hands-on** lengkap dengan skrip setup dan auto-grader mandiri.
 
 Contohnya:
 
 ```text
 lab/
-└── fase-1/
-    ├── tryhackme/
-    ├── linux/
-    ├── networking/
-    ├── ssh/
-    ├── nginx/
+├── fase-1-linux-networking-security/
+│   ├── lab-1-filesystem-permissions-links/   # Filesystem, I/O Redirect, chmod, ln
+│   └── lab-2-container-prep-users-grep-vim/  # EX188 Prep: grep regex, vi/vim, User SubUID, SGID 2770
+│
+└── fase-2-devops-foundation/
+    └── ex188-podman-exercises-01-03/         # Podman Lifecycle, Custom Image UBI9, SELinux Storage
+```
     └── firewall/
 ```
 

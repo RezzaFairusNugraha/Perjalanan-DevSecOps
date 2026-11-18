@@ -1,46 +1,44 @@
-# Hands-On Lab: Linux File System, Permissions, Redirects & Links
+# 🧪 Direktori Praktik & Hands-On Lab (Fase 1: Linux, Networking & Security)
 
-Welcome to your Red Hat style hands-on lab! Complete the tasks below inside your Linux terminal.
-
-## How to Use This Lab
-1. Run `bash setup-lab.sh` to initialize/reset the lab environment.
-2. Read and complete **Task 1** through **Task 5** below.
-3. Run `bash grade-lab.sh` at any time to check which tasks pass (`[ PASS ]`) or fail (`[ FAIL ]`).
+Struktur folder di dalam direktori `lab/fase-1-linux-networking-security/` telah distandarisasi secara rapi berdasarkan modul dan tingkat kemahiran:
 
 ---
 
-## Tasks
+## 📂 Struktur Lab:
 
-### Task 1: Build the Directory Structure
-1. Inside `~/app-deploy`, create three subdirectories:
-   - `configs`
-   - `scripts`
-   - `logs`
-2. Copy the `configs` directory recursively to `~/app-deploy/configs-backup`.
+```text
+lab/fase-1-linux-networking-security/
+│
+├── lab-1-filesystem-permissions-links/
+│   ├── README.md               # Panduan tugas Lab 1 (Path, mkdir, chmod numerik, >, tee, ln hard/soft)
+│   ├── setup-lab.sh            # Skrip otomatisasi inisialisasi lingkungan Lab 1
+│   └── grade-lab.sh            # Skrip auto-grader penilaian otomatis Lab 1
+│
+├── lab-2-container-prep-users-grep-vim/
+│   ├── README.md               # Panduan tugas Lab 2 v2 (EX188 Prep: grep regex, vi/vim, User SubUID, SGID 2770, Sticky 1777)
+│   ├── SOLUTION.md             # Kunci jawaban & panduan command lengkap Lab 2
+│   ├── setup-lab.sh            # Skrip reset & persiapan staging Lab 2
+│   └── grade-lab.sh            # Skrip auto-grader penilaian otomatis Lab 2
+│
+└── README.md                   # Panduan indeks seluruh lab Fase 1
+```
 
-### Task 2: Text Creation, Redirection (`>`, `>>`), and `tee`
-1. Create the file `~/app-deploy/scripts/deploy.sh`.
-2. Write `#!/bin/bash` as the first line using `>`.
-3. Append `echo "Starting Deployment"` as the second line using `>>`.
-4. Run `uname -a` and pipe it into `tee` so the output is saved to `~/app-deploy/logs/system_info.log`.
+---
 
-### Task 3: Configure Numeric Permissions (`chmod`)
-1. Change permissions on `~/app-deploy/scripts/deploy.sh` to **`755`** (`rwxr-xr-x`).
-2. Create `~/app-deploy/configs/database.env` with the text `DB_PASS=secret123`.
-3. Change permissions on `~/app-deploy/configs/database.env` to **`600`** (`rw-------`).
+## 🚀 Cara Menjalankan Lab:
 
-### Task 4: Wildcards and Finding Files
-1. Inside `~/app-deploy/configs`, create three empty files:
-   - `web-1.conf`
-   - `web-2.conf`
-   - `web-test.conf`
-2. Practice listing only `web-1.conf` and `web-2.conf` using bracket wildcards: `ls ~/app-deploy/configs/web-[12].conf`.
-3. Find all `.conf` files inside `~/app-deploy` and save the list of found paths into `~/app-deploy/logs/found_configs.txt` using:
-   `find ~/app-deploy -name "*.conf" > ~/app-deploy/logs/found_configs.txt`
+### 1. Menjalankan Lab 1 (Dasar File, Hak Akses & Links):
+```bash
+cd lab/fase-1-linux-networking-security/lab-1-filesystem-permissions-links
+bash setup-lab.sh
+# Kerjakan tugas sesuai README.md
+bash grade-lab.sh
+```
 
-### Task 5: Hard Links and Symbolic Links
-1. Create a file `~/app-deploy/configs/master.conf` with the text `SERVER_PORT=8080`.
-2. Create a **hard link** named `~/app-deploy/configs/hard_master.conf` pointing to `~/app-deploy/configs/master.conf`.
-3. Create a **symbolic (soft) link** named `~/app-deploy/quick_access.conf` pointing to `~/app-deploy/configs/master.conf`.
-4. Rename the original `~/app-deploy/configs/master.conf` to `~/app-deploy/configs/master.conf.bak`.
-   *(Notice how `hard_master.conf` still works, while `quick_access.conf` becomes a broken link!)*
+### 2. Menjalankan Lab 2 (Persiapan Container EX188, Users, vi/vim & Special Permissions):
+```bash
+cd lab/fase-1-linux-networking-security/lab-2-container-prep-users-grep-vim
+sudo bash setup-lab.sh
+# Kerjakan tugas sesuai README.md
+sudo bash grade-lab.sh
+```
