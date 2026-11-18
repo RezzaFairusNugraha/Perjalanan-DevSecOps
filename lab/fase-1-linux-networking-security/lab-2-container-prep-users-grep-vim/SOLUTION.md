@@ -1,52 +1,52 @@
-# Kunci Jawaban & Panduan Solusi Lab 2 (v2)
+# Solutions & Command Reference for Lab 2 (v2)
 
-Gunakan panduan ini jika kamu ingin mencocokkan hasil kerjamu atau butuh referensi command saat mentok.
+Use this guide to verify your solutions or reference commands if you encounter difficulties.
 
-> Masuk ke mode root terlebih dahulu:
+> Ensure you switch to the root environment beforehand:
 > ```bash
 > sudo -i
 > ```
 
 ---
 
-### Solusi Task 1: Staging Storage & File Operations
+### Solution for Task 1: Staging Storage & File Operations
 ```bash
-# 1. Buat folder data dan conf
+# 1. Create data and conf directories
 mkdir -p /opt/container-lab/app/data
 mkdir -p /opt/container-lab/app/conf
 
-# 2. Pindahkan app.conf
+# 2. Move app.conf into conf directory
 mv /tmp/staging-ex188/app.conf /opt/container-lab/app/conf/app.conf
 
-# 3. Salin template default.env menjadi .env
+# 3. Copy default.env to hidden .env file
 cp /tmp/staging-ex188/default.env /opt/container-lab/app/conf/.env
 
-# 4. Hapus folder staging lama
+# 4. Remove old staging directory
 rm -rf /tmp/staging-ex188
 ```
 
 ---
 
-### Solusi Task 2: Log Extraction & Analysis
+### Solution for Task 2: Log Extraction & Analysis
 ```bash
-# 1. Cari CRITICAL atau FATAL
+# 1. Find CRITICAL or FATAL lines
 grep -E "CRITICAL|FATAL" /opt/container-lab/logs/podman-service.log > /opt/container-lab/logs/alerts.txt
 
-# 2. Cari semua baris dengan REMOTE_ADDR=
+# 2. Find lines matching REMOTE_ADDR=
 grep "REMOTE_ADDR=" /opt/container-lab/logs/podman-service.log > /opt/container-lab/logs/connections.txt
 
-# 3. Ambil 5 baris terakhir
+# 3. Extract last 5 lines
 tail -n 5 /opt/container-lab/logs/podman-service.log > /opt/container-lab/logs/recent.txt
 ```
 
 ---
 
-### Solusi Task 3: Bikin Custom `Containerfile` via `vi` / `vim`
-1. Buka file:
+### Solution for Task 3: Author a Custom `Containerfile` via `vi` / `vim`
+1. Open the file:
    ```bash
    vi /opt/container-lab/Containerfile
    ```
-2. Tekan `i` lalu isi persis:
+2. Press `i` to enter Insert mode, then add the following content:
    ```dockerfile
    FROM registry.access.redhat.com/ubi9/ubi-minimal:latest
    LABEL maintainer="student@ex188.lab"
@@ -55,44 +55,44 @@ tail -n 5 /opt/container-lab/logs/podman-service.log > /opt/container-lab/logs/r
    EXPOSE 8080
    CMD ["python3", "-m", "http.server", "8080"]
    ```
-3. Tekan `Esc` lalu ketik `:wq` dan tekan `Enter`.
+3. Press `Esc`, then type `:wq` and press `Enter`.
 
 ---
 
-### Solusi Task 4: Manajemen User & SubUID
+### Solution for Task 4: User Management & SubUID
 ```bash
-# 1. Buat grup engineers
+# 1. Create group engineers
 groupadd engineers
 
-# 2. Buat user apprunner dengan UID 1024 dan grup engineers
+# 2. Create user apprunner with UID 1024 and supplementary group engineers
 useradd -u 1024 -G engineers apprunner
 
-# 3. Simpan output id
+# 3. Save identity information
 id apprunner > /opt/container-lab/logs/apprunner-info.txt
 ```
 
 ---
 
-### Solusi Task 5: Izin Khusus Keamanan (SGID & Sticky Bit)
+### Solution for Task 5: Special Security Permissions (SGID & Sticky Bit)
 ```bash
-# 1. Buat direktori
+# 1. Create target directories
 mkdir -p /opt/container-lab/shared-workspace
 mkdir -p /opt/container-lab/public-drop
 
-# 2. Ubah grup shared-workspace ke engineers
+# 2. Change group ownership to engineers
 chown :engineers /opt/container-lab/shared-workspace
 
-# 3. Pasang SGID (2770)
+# 3. Set SGID (2770)
 chmod 2770 /opt/container-lab/shared-workspace
 
-# 4. Pasang Sticky Bit (1777)
+# 4. Set Sticky Bit (1777)
 chmod 1777 /opt/container-lab/public-drop
 ```
 
 ---
 
-### Tes Penilaian:
+### Verification:
 ```bash
 bash grade-lab.sh
 ```
-Target: **`FINAL SCORE: 5 / 5`** 🎉
+Expected result: **`FINAL SCORE: 5 / 5`** 🎉

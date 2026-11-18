@@ -1,64 +1,64 @@
 # Hands-On Lab 2 (v2): EX188 Advanced Prep — Containerfile, Multi-Target grep, vi/vim, User SubUIDs & Shared SGID
 
-Selamat datang di **Lab 2 (Edisi Latihan Ulang / Reset)**!  
-Skenario pada lab ini telah diperbarui agar lebih menantang dan semakin mendekati ujian **Red Hat EX188**.
+Welcome to **Lab 2 (Reset / Re-practice Edition)**!  
+This lab scenario has been updated to be more challenging and aligned with the official **Red Hat Certified Specialist in Containers (EX188)** exam style.
 
-Latihan ini menguji:
-- Operasi berkas & direktori (`mkdir -p`, `cp`, `mv`, `rm`).
-- Pemfilteran log multi-pola menggunakan `grep -E` (regex), `tail`, dan `head`.
-- Penulisan **`Containerfile`** berbasis Python micro-service langsung menggunakan editor **`vi` / `vim`**.
-- Manajemen user non-root (`useradd`, `groupadd`, `usermod`, `id`) dan verifikasi alokasi **SubUID / SubGID** (fondasi *Rootless Container* di RHEL/Podman).
-- Izin khusus keamanan: **SGID** (`2770`) dan **Sticky Bit** (`1777`) dengan validasi file baru.
+This lab evaluates:
+- File and directory operations (`mkdir -p`, `cp`, `mv`, `rm`).
+- Multi-pattern log filtering using `grep -E` (regex), `tail`, and standard output redirection.
+- Writing a microservice **`Containerfile`** directly from the terminal using **`vi` / `vim`**.
+- Non-root user management (`useradd`, `groupadd`, `usermod`, `id`) and verifying **SubUID / SubGID** allocations (the bedrock of *Rootless Containers* on RHEL/Podman).
+- Advanced directory security permissions: **SGID** (`2770`) and **Sticky Bit** (`1777`) with group inheritance validation.
 
-> 💡 **PENTING:** Seluruh setup, pengerjaan, dan penilaian lab ini membutuhkan hak akses root. Jalankan perintah atau masuk ke mode root dengan:
+> 💡 **IMPORTANT:** All setup, grading, and configuration tasks in this lab require root privileges. Execute commands with `sudo` or switch to the root environment beforehand:
 > ```bash
 > sudo -i
 > ```
 
 ---
 
-## 🚀 Cara Memulai / Reset Lab
+## 🚀 How to Start / Reset the Lab
 
-1. Jalankan script setup untuk me-reset lingkungan lab:
+1. Run the setup script to initialize or reset the clean lab environment:
    ```bash
    sudo bash setup-lab.sh
    ```
-2. Kerjakan **Task 1** sampai **Task 5** di bawah ini secara mandiri di terminal VM.
-3. Jalankan penilaian otomatis kapan saja untuk memeriksa skor:
+2. Complete **Task 1** through **Task 5** independently inside your VM terminal.
+3. Run the automated grading script anytime to verify your score:
    ```bash
    sudo bash grade-lab.sh
    ```
 
 ---
 
-## 📋 Daftar Tugas (Tasks)
+## 📋 Lab Tasks
 
 ### Task 1: Staging Storage & File Operations (`mkdir -p`, `mv`, `cp`, `rm`)
-Siapkan struktur folder host yang akan digunakan untuk volume container:
-1. Buat direktori:
+Prepare the host directory structure that will later be mounted into container volumes:
+1. Create the following directories:
    - `/opt/container-lab/app/data`
    - `/opt/container-lab/app/conf`
-2. Pindahkan file konfigurasi `/tmp/staging-ex188/app.conf` ke `/opt/container-lab/app/conf/app.conf`.
-3. Salin file template `/tmp/staging-ex188/default.env` menjadi `/opt/container-lab/app/conf/.env`.
-4. Hapus folder temporary `/tmp/staging-ex188` beserta seluruh isinya yang sudah tidak diperlukan (`rm -rf`).
+2. Move the configuration file `/tmp/staging-ex188/app.conf` to `/opt/container-lab/app/conf/app.conf`.
+3. Copy the template file `/tmp/staging-ex188/default.env` to `/opt/container-lab/app/conf/.env` (as a hidden file).
+4. Remove the temporary staging directory `/tmp/staging-ex188` along with all its contents (`rm -rf`).
 
 ---
 
 ### Task 2: Log Extraction & Analysis (`cat`, `tail`, `grep`, `egrep`)
-Sistem telah menghasilkan file log realistis di **`/opt/container-lab/logs/podman-service.log`**.
-1. Cari baris yang berstatus **`CRITICAL`** atau **`FATAL`** (case-sensitive) menggunakan `grep -E` atau `egrep`, lalu simpan ke **`/opt/container-lab/logs/alerts.txt`**.
-2. Cari semua baris yang mencatat IP internal container dengan format kata kunci **`REMOTE_ADDR=`**, lalu simpan ke **`/opt/container-lab/logs/connections.txt`**.
-3. Ambil tepat **5 baris terakhir** dari `/opt/container-lab/logs/podman-service.log` menggunakan `tail -n 5`, lalu simpan ke **`/opt/container-lab/logs/recent.txt`**.
+The setup routine generated a realistic container log at **`/opt/container-lab/logs/podman-service.log`**.
+1. Search for all log entries containing either **`CRITICAL`** or **`FATAL`** (case-sensitive) using `grep -E` (or `egrep`), and redirect the output to **`/opt/container-lab/logs/alerts.txt`**.
+2. Search for all lines recording internal container IP addresses marked with **`REMOTE_ADDR=`**, and redirect the output to **`/opt/container-lab/logs/connections.txt`**.
+3. Extract exactly the **last 5 lines** of `/opt/container-lab/logs/podman-service.log` using `tail -n 5`, and redirect them to **`/opt/container-lab/logs/recent.txt`**.
 
 ---
 
-### Task 3: Bikin Custom `Containerfile` Pakai `vi` / `vim`
-Latih kemampuan membuat berkas instruksi container tanpa mouse/GUI:
-1. Buat dan buka berkas **`/opt/container-lab/Containerfile`** menggunakan perintah:
+### Task 3: Author a Custom `Containerfile` Using `vi` / `vim`
+Train your ability to compose container definitions directly inside a terminal without a mouse or GUI:
+1. Create and open **`/opt/container-lab/Containerfile`** using:
    ```bash
    vi /opt/container-lab/Containerfile
    ```
-2. Tekan tombol `i` untuk masuk mode Insert, lalu ketik persis 6 baris berikut:
+2. Press `i` to enter Insert mode, then type the exact 6 lines below:
    ```dockerfile
    FROM registry.access.redhat.com/ubi9/ubi-minimal:latest
    LABEL maintainer="student@ex188.lab"
@@ -67,39 +67,39 @@ Latih kemampuan membuat berkas instruksi container tanpa mouse/GUI:
    EXPOSE 8080
    CMD ["python3", "-m", "http.server", "8080"]
    ```
-3. Tekan `Esc`, lalu ketik `:wq` dan tekan `Enter` untuk menyimpan dan keluar.
-4. Pastikan isinya benar dengan perintah:
+3. Press `Esc`, type `:wq`, and press `Enter` to save and exit.
+4. Verify the file contents using:
    ```bash
    cat /opt/container-lab/Containerfile
    ```
 
 ---
 
-### Task 4: Manajemen User & SubUID Rootless (`groupadd`, `useradd`, `id`)
-Dalam ujian EX188, container dijalankan oleh user biasa non-root:
-1. Buat grup baru bernama **`engineers`**.
-2. Buat user baru bernama **`apprunner`** dengan:
-   - UID spesifik **`1024`**
-   - Grup tambahan (supplementary group) **`engineers`**
-   *(Contoh command: `useradd -u 1024 -G engineers apprunner`)*.
-3. Simpan ringkasan `id apprunner` ke berkas **`/opt/container-lab/logs/apprunner-info.txt`**.
-4. Periksa apakah user `apprunner` otomatis memiliki range SubUID di sistem dengan menjalankan:
+### Task 4: User Management & Rootless SubUID Verification (`groupadd`, `useradd`, `id`)
+In the EX188 exam, container workloads must be executed by non-root users:
+1. Create a new supplementary group named **`engineers`**.
+2. Create a new user named **`apprunner`** with:
+   - Specific UID: **`1024`**
+   - Supplementary group: **`engineers`**
+   *(Example command: `useradd -u 1024 -G engineers apprunner`)*.
+3. Save the full identity output of `id apprunner` into **`/opt/container-lab/logs/apprunner-info.txt`**.
+4. Verify that user `apprunner` has been allocated subordinate UIDs in the system by inspecting:
    ```bash
    grep apprunner /etc/subuid
    ```
 
 ---
 
-### Task 5: Izin Khusus Keamanan — SGID & Sticky Bit (`chmod`, `chown`)
-Konfigurasikan direktori berbagi tim agar file baru otomatis aman:
-1. Buat dua direktori:
+### Task 5: Special Security Permissions — SGID & Sticky Bit (`chmod`, `chown`)
+Configure secure shared directories for collaborative container workflows:
+1. Create two directories:
    - `/opt/container-lab/shared-workspace`
    - `/opt/container-lab/public-drop`
-2. Ubah kepemilikan grup pada `/opt/container-lab/shared-workspace` menjadi grup **`engineers`** (`chown :engineers ...`).
-3. Pasang izin **SGID** dengan nilai numerik **`2770`** pada `/opt/container-lab/shared-workspace` (agar setiap file baru yang dibuat di dalamnya otomatis memiliki kepemilikan grup `engineers`).
-4. Pasang izin **Sticky Bit** dengan nilai numerik **`1777`** pada `/opt/container-lab/public-drop` (agar pengguna bebas membuat file tetapi tidak bisa menghapus file milik user lain).
-5. Verifikasi izin menggunakan:
+2. Change the group ownership of `/opt/container-lab/shared-workspace` to group **`engineers`** (`chown :engineers ...`).
+3. Set the **SGID** permission with numeric mode **`2770`** on `/opt/container-lab/shared-workspace` (ensuring all new files created inside inherit group `engineers`).
+4. Set the **Sticky Bit** permission with numeric mode **`1777`** on `/opt/container-lab/public-drop` (allowing users to create files while preventing deletion of files owned by others).
+5. Verify both permissions:
    ```bash
    ls -ld /opt/container-lab/shared-workspace /opt/container-lab/public-drop
    ```
-   *(Pastikan ada flag `s` pada shared-workspace dan flag `t` pada public-drop!)*
+   *(Ensure the `s` flag appears on `shared-workspace` and the `t` flag appears on `public-drop`!)*
