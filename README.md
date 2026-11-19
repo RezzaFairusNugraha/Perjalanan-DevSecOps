@@ -106,11 +106,11 @@ Membangun fondasi cybersecurity melalui **TryHackMe (Pre Security)**—mulai dar
 - [ ] Pre Security: Windows Fundamentals
 
 #### 🐧 Linux, Networking & Server Hardening
-- [x] Linux Server Fundamentals (VM: **Rocky Linux 9 Minimal** | HTB Academy: 38% | Udemy: Selesai s/d No. 97 Special Permissions | Lab 2 EX188 v2)
+- [x] Linux Server Fundamentals (VM: **Rocky Linux 9 Minimal** | HTB Academy: 38% | Udemy: Selesai s/d No. 123 | Lab 1, 2 & 3)
 - [x] User, Group & Permission (Hak Akses `chmod` Numerik/Simbolik, Kepemilikan `chown`/`chgrp`, Special Permissions: SUID, SGID `2770`, Sticky Bit `1777`, Konsep Least Privilege)
-- [x] Process & Systemd (Inspeksi Proses `ps`/`top`, Service Lifecycle `systemctl`)
+- [x] Process & Systemd (Inspeksi Proses `ps`/`top`, Process Signals `kill -15`/`-9`, Service Lifecycle `systemctl enable --now`, Log Troubleshooting `journalctl`)
 - [ ] Package Management
-- [ ] Disk, Memory & Resource Monitoring
+- [x] Disk, Memory & Resource Monitoring (`df -h`, `free -m`, `top`, `dmesg`, System Health Reports)
 - [ ] Networking Fundamentals
 - [ ] TCP/IP, Port & Protocol
 - [ ] DNS & HTTP/HTTPS
@@ -579,12 +579,11 @@ Contohnya:
 lab/
 ├── fase-1-linux-networking-security/
 │   ├── lab-1-filesystem-permissions-links/   # Filesystem, I/O Redirect, chmod, ln
-│   └── lab-2-container-prep-users-grep-vim/  # EX188 Prep: grep regex, vi/vim, User SubUID, SGID 2770
+│   ├── lab-2-container-prep-users-grep-vim/  # EX188 Prep: grep regex, vi/vim, User SubUID, SGID 2770
+│   └── lab-3-systemd-processes-logs-env/     # Systemd enable --now, ps/kill -9, journalctl, df/free, Env Vars
 │
 └── fase-2-devops-foundation/
     └── ex188-podman-exercises-01-03/         # Podman Lifecycle, Custom Image UBI9, SELinux Storage
-```
-    └── firewall/
 ```
 
 ### `proyek-*`

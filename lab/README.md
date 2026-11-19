@@ -12,7 +12,8 @@ lab/
 ├── fase-1-linux-networking-security/
 │   ├── README.md                                  # Indeks panduan seluruh lab di Fase 1
 │   ├── lab-1-filesystem-permissions-links/        # Lab 1: Filesystem, I/O Redirection, chmod, ln
-│   └── lab-2-container-prep-users-grep-vim/       # Lab 2: EX188 Prep, grep, vi/vim, User SubUID, SGID/Sticky
+│   ├── lab-2-container-prep-users-grep-vim/       # Lab 2: EX188 Prep, grep, vi/vim, User SubUID, SGID/Sticky
+│   └── lab-3-systemd-processes-logs-env/          # Lab 3: Systemd enable --now, ps/kill -9, journalctl, df/free, Env Vars
 │
 ├── fase-2-devops-foundation/
 │   └── ex188-podman-exercises-01-03/              # Lab Podman Lifecycle, Custom Image UBI9, & Storage SELinux (:Z)
