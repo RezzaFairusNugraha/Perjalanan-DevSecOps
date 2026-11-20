@@ -15,7 +15,7 @@ TryHackMe · Redhat · Linux · Networking · Docker · CI/CD · AWS · Terrafor
 Repo ini adalah jurnal belajarku selama **18 minggu**  
 (**23 Okt 2026 – 26 Feb 2027**), yang dikerjakan sambil menjalani PKL.
 
-Perjalanan ini berfokus pada membangun fondasi **Cybersecurity (melalui TryHackMe), Linux, Networking, DevOps, dan Cloud**, kemudian menggabungkannya menjadi kemampuan **DevSecOps**.
+Perjalanan ini berfokus pada membangun fondasi **Cybersecurity (melalui TryHackMe), Linux (udemy), Networking, DevOps, dan Cloud**, kemudian menggabungkannya menjadi kemampuan **DevSecOps**.
 
 Semua materi di repo ini dibuat berdasarkan apa yang benar-benar kupelajari dan praktikkan sendiri, termasuk catatan serta walkthrough lab dari **TryHackMe** (mulai dari *Pre Security* hingga learning path *DevSecOps*).
 
