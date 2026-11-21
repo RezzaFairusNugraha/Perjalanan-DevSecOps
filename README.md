@@ -784,6 +784,8 @@ Seluruh praktik cybersecurity dilakukan hanya pada:
 - **TryHackMe** *(Platform lab utama: Pre Security, Cyber Security Intro, hingga DevSecOps Learning Path)*
 - **Hack The Box Academy** *(Linux Fundamentals & dasar keamanan sistem)*
 - **Udemy** *(Kursus Linux Fundamentals & Administrasi Sistem)*
+- **Coursera** *(IBM DevOps & Software Engineering, Google Cybersecurity, AWS Cloud Solutions Architect, IBM Cybersecurity Analyst)*
+- **Digitalent Komdigi (DEX)** *(AWS Cloud Foundations/Architecting, Google Cybersecurity, & Vulnerability Management)*
 - **Dicoding** *(Kelas Pengenalan ke DevOps)*
 - **Rocky Linux 9 (Minimal Server VM)** *(Lab praktik SysAdmin, SELinux, & persiapan ujian Red Hat EX188)*
 - [roadmap.sh/devops](https://roadmap.sh/devops) & [roadmap.sh/devsecops](https://roadmap.sh/devsecops)
