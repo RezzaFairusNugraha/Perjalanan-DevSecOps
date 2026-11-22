@@ -41,7 +41,7 @@ Tujuannya bukan sekadar menyelesaikan tutorial, tetapi **memahami bagaimana apli
 - 📜 Memiliki sertifikat **Pengenalan ke DevOps (Dicoding)**
 - 🐧 Memiliki sertifikat **Red Hat Container**
 - 🔐 Tertarik pada cybersecurity sejak SMP, aktif belajar di **TryHackMe**, **Hack The Box Academy**, dan membuat konten edukasi cybersecurity (@WhiteExploit)
-- 🐳 Sedang mempersiapkan ujian sertifikasi **Red Hat Certified Specialist in Containers (EX188)** dengan VM **Rocky Linux 9 (Minimal Server)** & **Podman**
+- 🐳 Sedang mempersiapkan ujian sertifikasi **Red Hat Certified Specialist in Containers (EX188)** dengan VM **Alma Linux 9 (Minimal Server)** & **Podman**
 - ⚙️ Sedang membangun kemampuan di bidang DevOps
 - ☁️ Tertarik pada Cloud dan Infrastructure
 - 🛡️ Target jangka panjang: **DevSecOps / Security Engineering**
