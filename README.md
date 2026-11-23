@@ -106,21 +106,21 @@ Membangun fondasi cybersecurity melalui **TryHackMe (Pre Security)**—mulai dar
 - [ ] Pre Security: Windows Fundamentals
 
 #### 🐧 Linux, Networking & Server Hardening
-- [x] Linux Server Fundamentals (VM: **Rocky Linux 9 Minimal** | HTB Academy: 38% | Udemy: Selesai s/d No. 123 | Lab 1, 2 & 3)
+- [x] Linux Server Fundamentals (VM: **Rocky Linux 9 Minimal** | HTB Academy: 38% | Udemy: Selesai s/d No. 187 | Lab 1, 2, 3 & 4)
 - [x] User, Group & Permission (Hak Akses `chmod` Numerik/Simbolik, Kepemilikan `chown`/`chgrp`, Special Permissions: SUID, SGID `2770`, Sticky Bit `1777`, Konsep Least Privilege)
-- [x] Process & Systemd (Inspeksi Proses `ps`/`top`, Process Signals `kill -15`/`-9`, Service Lifecycle `systemctl enable --now`, Log Troubleshooting `journalctl`)
-- [ ] Package Management
+- [x] Process & Systemd (Inspeksi Proses `ps`/`top`, Process Signals `kill -15`/`-9`, Service Lifecycle `systemctl enable --now`/`unmask`, Log Troubleshooting `journalctl`)
+- [x] Package Management (`dnf`/`yum`, `rpm -q`, `dnf provides`, `apt` di Ubuntu)
 - [x] Disk, Memory & Resource Monitoring (`df -h`, `free -m`, `top`, `dmesg`, System Health Reports)
-- [ ] Networking Fundamentals
-- [ ] TCP/IP, Port & Protocol
-- [ ] DNS & HTTP/HTTPS
-- [ ] Network Troubleshooting
-- [ ] SSH & SSH Key
-- [ ] SSH Hardening
-- [ ] Firewall
+- [x] Networking Fundamentals (VM Internet Connectivity, `/etc/hosts`, Client-Server Architecture)
+- [x] TCP/IP, Port & Protocol (Inspeksi Socket & Port dengan `ss -tulpn`, Deteksi Konflik Port 80/443)
+- [x] DNS & HTTP/HTTPS (`bind-utils`: `host`, `dig`, `nslookup`, Web Server `httpd` vs `apache2`, `curl`)
+- [x] Network Troubleshooting (`ping`, `curl -I`/`-k`, `ss -tulpn`, Firewall Rule Auditing)
+- [x] SSH & SSH Key (`ssh-keygen -t ed25519`, `authorized_keys`, Passwordless Login, `scp` File Transfer)
+- [x] SSH Hardening (Key-based Auth, Strict Permissions `700` `.ssh` & `600` `authorized_keys`)
+- [x] Firewall (`firewalld` / `firewall-cmd --add-port`/`--add-service`, Direct Rules Outbound `DROP`/`REJECT`, `iptables-nft`)
 - [ ] Server Security Hardening
 - [ ] Nginx Reverse Proxy
-- [ ] SSL/TLS
+- [x] SSL/TLS (`openssl req -x509` Self-Signed Certificate dengan SAN `subjectAltName`, Trusted CA `update-ca-certificates`)
 - [ ] Nginx Troubleshooting
 
 ### 📁 Dokumentasi
@@ -580,7 +580,8 @@ lab/
 ├── fase-1-linux-networking-security/
 │   ├── lab-1-filesystem-permissions-links/   # Filesystem, I/O Redirect, chmod, ln
 │   ├── lab-2-container-prep-users-grep-vim/  # EX188 Prep: grep regex, vi/vim, User SubUID, SGID 2770
-│   └── lab-3-systemd-processes-logs-env/     # Systemd enable --now, ps/kill -9, journalctl, df/free, Env Vars
+│   ├── lab-3-systemd-processes-logs-env/     # Systemd enable --now, ps/kill -9, journalctl, df/free, Env Vars
+│   └── lab-4-networking-ssh-dnf-firewalld/   # dnf/rpm, ss -tulpn, curl, SSH Keys, scp, firewalld & direct rules
 │
 └── fase-2-devops-foundation/
     └── ex188-podman-exercises-01-03/         # Podman Lifecycle, Custom Image UBI9, SELinux Storage

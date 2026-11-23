@@ -26,6 +26,12 @@ lab/fase-1-linux-networking-security/
 │   ├── setup-lab.sh            # Skrip reset & persiapan rogue worker + systemd unit Lab 3
 │   └── grade-lab.sh            # Skrip auto-grader penilaian otomatis Lab 3
 │
+├── lab-4-networking-ssh-dnf-firewalld/
+│   ├── README.md               # Panduan tugas Lab 4 (dnf/rpm, ss -tulpn, curl, SSH Keys, scp, firewalld & direct rules)
+│   ├── SOLUTION.md             # Kunci jawaban & panduan command lengkap Lab 4
+│   ├── setup-lab.sh            # Skrip reset & persiapan microservice port 8091 + staging scp Lab 4
+│   └── grade-lab.sh            # Skrip auto-grader penilaian otomatis Lab 4
+│
 └── README.md                   # Panduan indeks seluruh lab Fase 1
 ```
 
@@ -52,6 +58,14 @@ sudo bash grade-lab.sh
 ### 3. Menjalankan Lab 3 (Systemd, Process Signals, `journalctl`, Monitoring & Env Vars):
 ```bash
 cd lab/fase-1-linux-networking-security/lab-3-systemd-processes-logs-env
+sudo bash setup-lab.sh
+# Kerjakan tugas sesuai README.md
+sudo bash grade-lab.sh
+```
+
+### 4. Menjalankan Lab 4 (Networking, `ss`, `curl`, SSH Keys, `scp`, `dnf`/`rpm` & `firewalld`):
+```bash
+cd lab/fase-1-linux-networking-security/lab-4-networking-ssh-dnf-firewalld
 sudo bash setup-lab.sh
 # Kerjakan tugas sesuai README.md
 sudo bash grade-lab.sh
