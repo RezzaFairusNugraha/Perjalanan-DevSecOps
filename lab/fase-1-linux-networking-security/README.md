@@ -32,6 +32,12 @@ lab/fase-1-linux-networking-security/
 │   ├── setup-lab.sh            # Skrip reset & persiapan microservice port 8091 + staging scp Lab 4
 │   └── grade-lab.sh            # Skrip auto-grader penilaian otomatis Lab 4
 │
+├── lab-5-grand-capstone-ex188-all-in-one/
+│   ├── README.md               # Grand Capstone Mock Exam (Gabungan Bagian 1 s/d 5: I/O, Users/SGID, Systemd/Signals, Network/Firewalld, SELinux/Podman)
+│   ├── SOLUTION.md             # Kunci jawaban & panduan command lengkap Lab 5
+│   ├── setup-lab.sh            # Skrip inisialisasi simulasi ujian akhir Lab 5
+│   └── grade-lab.sh            # Skrip auto-grader penilaian otomatis Lab 5 (5/5)
+│
 └── README.md                   # Panduan indeks seluruh lab Fase 1
 ```
 
@@ -68,5 +74,13 @@ sudo bash grade-lab.sh
 cd lab/fase-1-linux-networking-security/lab-4-networking-ssh-dnf-firewalld
 sudo bash setup-lab.sh
 # Kerjakan tugas sesuai README.md
+sudo bash grade-lab.sh
+```
+
+### 5. Menjalankan Lab 5 (Grand Capstone — Simulasi Gabungan Bagian 1 s/d 5):
+```bash
+cd lab/fase-1-linux-networking-security/lab-5-grand-capstone-ex188-all-in-one
+sudo bash setup-lab.sh
+# Kerjakan Task 1 s/d 5 di README.md tanpa lihat kunci jawaban
 sudo bash grade-lab.sh
 ```

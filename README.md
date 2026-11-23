@@ -581,7 +581,8 @@ lab/
 │   ├── lab-1-filesystem-permissions-links/   # Filesystem, I/O Redirect, chmod, ln
 │   ├── lab-2-container-prep-users-grep-vim/  # EX188 Prep: grep regex, vi/vim, User SubUID, SGID 2770
 │   ├── lab-3-systemd-processes-logs-env/     # Systemd enable --now, ps/kill -9, journalctl, df/free, Env Vars
-│   └── lab-4-networking-ssh-dnf-firewalld/   # dnf/rpm, ss -tulpn, curl, SSH Keys, scp, firewalld & direct rules
+│   ├── lab-4-networking-ssh-dnf-firewalld/   # dnf/rpm, ss -tulpn, curl, SSH Keys, scp, firewalld & direct rules
+│   └── lab-5-grand-capstone-ex188-all-in-one/ # Grand Capstone Mock Exam (Bagian 1–5 All-in-One: I/O, Users, Systemd, Firewalld, SELinux & Podman)
 │
 └── fase-2-devops-foundation/
     └── ex188-podman-exercises-01-03/         # Podman Lifecycle, Custom Image UBI9, SELinux Storage
