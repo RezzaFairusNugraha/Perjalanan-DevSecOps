@@ -1,7 +1,7 @@
 # Hands-On Lab 5 (Grand Capstone): Complete Red Hat EX188 Prerequisite Mock Exam (Sections 1–5 All-in-One)
 
 Welcome to **Lab 5 — The Grand Capstone Lab**!  
-This comprehensive exam simulation integrates **all 5 core pillars (Bagian 1 to Bagian 5)** into one end-to-end scenario:
+This comprehensive exam simulation integrates **all 5 core pillars (Sections 1 through 5)** into one end-to-end scenario:
 
 - **Section 1 (Text, I/O Redirects, `grep`, Pipes, `tee` & `vi`/`vim`):** Building directory trees, filtering multi-pattern logs with `grep -E` + `tee`, and writing a `Containerfile` with `vi`/`vim`.
 - **Section 2 (Users, Groups, UID & Special Permissions):** Creating a dedicated non-root user/group and securing shared web storage with **SGID (`2775`)**.
