@@ -106,7 +106,7 @@ Membangun fondasi cybersecurity melalui **TryHackMe (Pre Security)**—mulai dar
 - [ ] Pre Security: Windows Fundamentals
 
 #### 🐧 Linux, Networking & Server Hardening
-- [x] Linux Server Fundamentals (VM: **Rocky Linux 9 Minimal** | HTB Academy: 38% | Udemy: Selesai s/d No. 187 | Lab 1, 2, 3 & 4)
+- [x] Linux Server Fundamentals (VM: **Rocky Linux 9 Minimal** | HTB Academy: 38% | Udemy: Selesai s/d No. 187 | Lab 1–4 Selesai & **Lab 5 Grand Capstone 4/5**)
 - [x] User, Group & Permission (Hak Akses `chmod` Numerik/Simbolik, Kepemilikan `chown`/`chgrp`, Special Permissions: SUID, SGID `2770`, Sticky Bit `1777`, Konsep Least Privilege)
 - [x] Process & Systemd (Inspeksi Proses `ps`/`top`, Process Signals `kill -15`/`-9`, Service Lifecycle `systemctl enable --now`/`unmask`, Log Troubleshooting `journalctl`)
 - [x] Package Management (`dnf`/`yum`, `rpm -q`, `dnf provides`, `apt` di Ubuntu)

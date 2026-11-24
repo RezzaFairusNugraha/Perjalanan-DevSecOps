@@ -113,10 +113,15 @@ rpm -qa | grep podman
    - Ketika `apache2` gagal start dengan error `(98)Address already in use: make_sock: could not bind to address [::]:80`, artinya Port 80 sudah dipakai service lain (seperti `nginx`), yang langsung terdeteksi dengan `ss -tulpn | grep :80`.
 4. **Simulasi Lokal SSL/TLS (HTTPS Port 443) & `curl: (60) SSL: no alternative certificate subject name matches`:**
    - Berhasil membuat sertifikat SSL *self-signed* lengkap dengan ekstensi **SAN (`subjectAltName=DNS:wpucourse.id`)** menggunakan `openssl req -x509` dan mendaftarkannya ke Trusted CA sistem (`update-ca-certificates`) sehingga `curl https://...` berjalan mulus tanpa error verifikasi SSL.
+5. **SSH Key `-i` Error (`Load key "/root/.ssh/authorized_keys": invalid format`) & Strict Permissions (`chmod 600`):**
+   - **Penyebab:** Memasukkan `/root/.ssh/authorized_keys` (Public Key / Gembok) ke opsi `-i` pada `scp`/`ssh`, padahal `-i` wajib diisi **Private Key** (Kunci, misalnya `/opt/ex188-capstone/id_capstone` tanpa `.pub`).
+   - **Aturan Permission Wajib SSH:** Folder `~/.ssh` (`chmod 700`), Private Key (`chmod 600`), dan `~/.ssh/authorized_keys` (`chmod 600`).
 
 ---
 
-## 🧪 Hands-On Lab 4
+## 🧪 Hands-On Lab 4 & Lab 5 (Grand Capstone)
 
-Untuk menguji seluruh kemampuan di atas, telah dibuat **Lab 4** lengkap dengan auto-grader:
-- Lokasi Lab: [`lab/fase-1-linux-networking-security/lab-4-networking-ssh-dnf-firewalld/`](../../../lab/fase-1-linux-networking-security/lab-4-networking-ssh-dnf-firewalld/README.md)
+- **Lab 4 (Networking, SSH, `scp`, `dnf`/`rpm`, `firewalld`):** [`lab/fase-1-linux-networking-security/lab-4-networking-ssh-dnf-firewalld/`](../../../lab/fase-1-linux-networking-security/lab-4-networking-ssh-dnf-firewalld/README.md)
+- **Lab 5 (Grand Capstone EX188 — Sections 1–5 All-in-One):** [`lab/fase-1-linux-networking-security/lab-5-grand-capstone-ex188-all-in-one/`](../../../lab/fase-1-linux-networking-security/lab-5-grand-capstone-ex188-all-in-one/README.md)
+  - **Hasil Sementara:** **PASSED 4 / 5** (Seluruh **Bagian 1, 2, 3, dan 4** berhasil lulus auto-grader!).
+  - **Sisa Target:** Menyelesaikan **Bagian 5** (Udemy No. 191 `podman` & No. 281 `SELinux`) untuk menyempurnakan skor menjadi **5 / 5**.
